@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.5'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -32,8 +31,24 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+
+  gem 'capybara', require: false
+  gem 'capybara-webkit', require: false
+
+  gem "webmock", "~> 1.11.0"
+  gem "timecop", "~> 0.6.1"
+  gem 'mocha', require: 'mocha/api'
+
+  gem 'coveralls', require: false
+  gem 'database_cleaner'
+end
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
