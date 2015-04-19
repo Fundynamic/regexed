@@ -4,4 +4,12 @@ class WelcomeController < ApplicationController
 
   end
 
+  def developers
+
+  end
+
+  def companies
+
+  end
+
 end
