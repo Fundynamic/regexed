@@ -3,8 +3,12 @@ Regexed::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'welcome#index'
+
   get 'developers' => 'welcome#developers'
   get 'bedrijven' => 'welcome#companies'
+
+  devise_for :users
+  get 'developers/aanmelden' => 'developers#signup_developer'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
