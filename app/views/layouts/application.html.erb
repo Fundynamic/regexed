@@ -10,7 +10,7 @@
 
 <div class="page-header">
   <ul>
-    <li>Foo</li>
+    <li><%= link_to('Home', root_path) %> </li>
     <li>
       <% if user_signed_in? %>
         <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
