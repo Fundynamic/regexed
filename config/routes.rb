@@ -8,7 +8,13 @@ Regexed::Application.routes.draw do
   get 'bedrijven' => 'welcome#companies'
 
   devise_for :users
-  get 'developers/aanmelden' => 'developers#signup_developer'
+
+  authenticate :user do
+    resources :opportunity
+    resources :developer
+    # todo company/organisation
+  end
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
