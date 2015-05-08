@@ -3,6 +3,7 @@ Regexed::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'welcome#index'
+  root to: 'wizard#index', constraints: FreshUserConstraint.new, as: :wizard_root
 
   get 'developers' => 'welcome#developers'
   get 'bedrijven' => 'welcome#companies'
@@ -10,6 +11,7 @@ Regexed::Application.routes.draw do
   devise_for :users
 
   authenticate :user do
+
     resources :opportunity
     resources :developer
     # todo company/organisation

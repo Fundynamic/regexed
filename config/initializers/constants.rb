@@ -1,0 +1,9 @@
+ROLE_ADMIN = 'admin'
+ROLE_ORGANISATION = 'organisation'
+ROLE_DEVELOPER = 'developer'
+
+ROLES = [
+  ROLE_ADMIN,
+  ROLE_DEVELOPER,
+  ROLE_ORGANISATION
+]

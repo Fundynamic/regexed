@@ -1,4 +1,4 @@
-class Developer < User
+class Developer < Role
 
   attr_accessible :name
 

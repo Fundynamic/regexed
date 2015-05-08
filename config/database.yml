@@ -1,6 +1,9 @@
 development:
+  host: localhost
   adapter: postgresql
   database: regexer_development
+  username: postgres
+  password: postgres
   pool: 5
   timeout: 5000
 
@@ -8,13 +11,19 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
+  host: localhost
   adapter: postgresql
   database: regexer_test
+  username: postgres
+  password: postgres
   pool: 5
   timeout: 5000
 
 production:
+  host: localhost
   adapter: postgresql
+  username: postgres
+  password: postgres
   database: regexer_production
   pool: 5
   timeout: 5000
