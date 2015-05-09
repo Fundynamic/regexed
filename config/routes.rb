@@ -2,16 +2,15 @@ Regexed::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'welcome#index'
-  root to: 'wizard#index', constraints: FreshUserConstraint.new, as: :wizard_root
-
   get 'developers' => 'welcome#developers'
   get 'bedrijven' => 'welcome#companies'
+  get 'wizard' => 'wizard#index'
 
   devise_for :users
 
-  authenticate :user do
+  root to: 'welcome#index'
 
+  authenticate :user do
     resources :opportunity
     resources :developer
     # todo company/organisation

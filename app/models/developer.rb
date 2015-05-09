@@ -1,6 +1,6 @@
 class Developer < Role
 
-  attr_accessible :name
+  attr_accessor :name
 
   validates_presence_of :name
 

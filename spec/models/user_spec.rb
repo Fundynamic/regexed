@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe Developer do
-  it { should validate_presence_of(:name) }
+describe User do
+  it { should have_many(:roles) }
 end
