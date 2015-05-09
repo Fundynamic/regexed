@@ -4,4 +4,12 @@ class WizardController < ApplicationController
 
   end
 
+  def developer
+    @role = Developer.new
+  end
+
+  def organisation
+    @role = Organisation.new
+  end
+
 end

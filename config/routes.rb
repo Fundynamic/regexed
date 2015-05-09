@@ -4,7 +4,9 @@ Regexed::Application.routes.draw do
 
   get 'developers' => 'welcome#developers'
   get 'bedrijven' => 'welcome#companies'
-  get 'wizard' => 'wizard#index'
+  get 'aanmelden' => 'wizard#index'
+  get 'aanmelden/developer' => 'wizard#developer'
+  get 'aanmelden/organisatie' => 'wizard#organisation'
 
   devise_for :users
 
