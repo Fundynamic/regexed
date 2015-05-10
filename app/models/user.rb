@@ -10,4 +10,28 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
 
+  def developer?
+    is_role? Developer.to_s
+  end
+
+  def organisation?
+    is_role? Organisation.to_s
+  end
+
+  def admin?
+    is_role? Admin.to_s
+  end
+
+  def needs_role?
+    self.roles.empty?
+  end
+
+private
+  def is_role?(role_type)
+    roles.each do |role|
+      return true if role.type == role_type
+    end
+    false
+  end
+
 end

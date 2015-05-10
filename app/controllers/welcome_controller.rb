@@ -2,8 +2,12 @@ class WelcomeController < ApplicationController
 
   def index
     if current_user
-      if current_user.roles.empty?
+      if current_user.needs_role?
         redirect_to controller: :wizard, action: :index
+      elsif current_user.developer?
+        redirect_to controller: :developers, action: :index
+      elsif current_user.organisation?
+        redirect_to controller: :organisation, action: :index
       end
     end
   end
