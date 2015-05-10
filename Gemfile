@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
+gem 'dynamic_form' # allows f.error_messages
+gem 'protected_attributes' # allows attr_accessible
 
 gem 'pg', '0.15.1'
 
@@ -28,7 +30,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'protected_attributes'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
