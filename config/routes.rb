@@ -5,8 +5,11 @@ Regexed::Application.routes.draw do
   get 'developers' => 'welcome#developers'
   get 'bedrijven' => 'welcome#companies'
   get 'aanmelden' => 'wizard#index'
-  get 'aanmelden/developer' => 'wizard#developer'
-  get 'aanmelden/organisatie' => 'wizard#organisation'
+
+  get 'aanmelden/organisatie' => 'wizard#organisation' #-->organisation.new?
+
+  get 'aanmelden/developer' => 'developers#new' # alias
+  resources :developers, only: [:index, :new, :create]
 
   devise_for :users
 
@@ -14,7 +17,7 @@ Regexed::Application.routes.draw do
 
   authenticate :user do
     resources :opportunity
-    resources :developer
+    resources :developers
     # todo company/organisation
   end
 
