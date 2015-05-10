@@ -17,7 +17,10 @@ ActiveRecord::Schema.define(version: 20150509145250) do
   enable_extension "plpgsql"
 
   create_table "developers", force: true do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "skills"
+    t.date     "available"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
