@@ -4,3 +4,17 @@ nl:
       user:
         password: Wachtwoord
         email: E-mailadres
+      developer:
+        first_name: Voornaam
+        last_name: Achternaam
+    errors:
+      messages:
+        blank: mag niet leeg zijn
+      template:
+        body:
+          Het formulier voldoet niet aan de voorwaarden. Corrigeer en probeer opnieuw.
+        header:
+          Woops
+  developers:
+    create:
+      succes: Je bent succesvol aangemeld als Developer
