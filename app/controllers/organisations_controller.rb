@@ -1,19 +1,21 @@
-class DevelopersController < ApplicationController
+class OrganisationsController < ApplicationController
 
   def index
-
+    flash[:notice] = t(".success")
   end
 
   def new
-    @developer = Developer.new
+    @organisation = Organisation.new
+  end
+
+  def edit
+    @organisation = Organisation.find(params[:id])
   end
 
   def create
-    puts "developer params #{params[:developer]}"
-    @developer = Developer.new(params[:developer])
-    puts "developer to be created #{@developer}"
-    current_user.roles << @developer
-    if @developer.save
+    @organisation = Organisation.new(params[:organisation])
+    current_user.roles << @organisation
+    if @organisation.save
       flash[:notice] = t(".success")
       redirect_to action: "index"
     else

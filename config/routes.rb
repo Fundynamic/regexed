@@ -16,6 +16,7 @@ Regexed::Application.routes.draw do
   authenticate :user do
     resources :opportunity
     resources :developers
+    resources :organisations
     # todo company/organisation
   end
 

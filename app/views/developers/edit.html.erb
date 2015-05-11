@@ -1,0 +1,33 @@
+<div class="page-aanmelden">
+  <h1>Profiel</h1>
+  <p>
+    Vul hier in hoe je heet wat je kunt en wat je graag zou willen leren.
+    Geef ook per wanneer je beschikbaar bent, wel zo handig.
+  </p>
+  <%= raise @developer %>
+  <%= form_for @developer do |f| %>
+    <%= f.error_messages %>
+
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :skills %><br />
+      <%= f.text_field :skills %>
+    </div>
+    <div class="field">
+      <%= f.label :availability %><br />
+      <%= f.date_field :availability %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Opslaan" %>
+    </div>
+  <% end %>
+
+</div>

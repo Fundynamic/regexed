@@ -8,6 +8,12 @@ class DevelopersController < ApplicationController
     @developer = Developer.new
   end
 
+  def edit
+    puts "id is #{params[:id]}"
+    puts "dev is #{Developer.find(params[:id])}"
+    @developer = Developer.find(params[:id])
+  end
+
   def create
     puts "developer params #{params[:developer]}"
     @developer = Developer.new(params[:developer])

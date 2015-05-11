@@ -14,8 +14,16 @@ class User < ActiveRecord::Base
     is_role? Developer.to_s
   end
 
+  def role_developer
+    get_role Developer.to_s
+  end
+
   def organisation?
     is_role? Organisation.to_s
+  end
+
+  def role_organisation
+    get_role Organisation.to_s
   end
 
   def admin?
@@ -32,6 +40,13 @@ private
       return true if role.type == role_type
     end
     false
+  end
+
+  def get_role(role_type)
+    roles.each do |role|
+      return role if role.type == role_type
+    end
+    nil
   end
 
 end
