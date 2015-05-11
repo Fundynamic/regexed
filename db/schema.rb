@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150509145250) do
 
   create_table "organisations", force: true do |t|
     t.string   "name"
+    t.string   "skills"
+    t.string   "pitch"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

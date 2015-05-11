@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       elsif current_user.developer?
         redirect_to controller: :developers, action: :index
       elsif current_user.organisation?
-        redirect_to controller: :organisation, action: :index
+        redirect_to controller: :organisations, action: :index
       end
     end
   end
