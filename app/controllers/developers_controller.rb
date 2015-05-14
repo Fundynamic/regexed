@@ -2,6 +2,7 @@ class DevelopersController < ApplicationController
 
   def index
     @developer = current_user.role_developer
+    @opportunities = Opportunity.starting_since(@developer.available)
   end
 
   def new

@@ -31,4 +31,12 @@ describe Opportunity do
     end
   end
 
+  context ".starting_since" do
+    let(:opportunity) { Opportunity.new({title: "foo", teaser: "some teaser", start_date: Date.today, end_date: nil}) }
+    before { create(opportunity) }
+    it "is found since yesterday" do
+      expect(Opportunity.starting_since(Date.yesterday)).to contain_exactly(opportunity)
+    end
+  end
+
 end

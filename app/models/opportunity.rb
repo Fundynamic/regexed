@@ -18,5 +18,9 @@ class Opportunity < ActiveRecord::Base
     errors.add(:end_date, :invalid)
   end
 
+  def self.starting_since(start_date)
+    where("start_date >= :start_date", start_date: start_date)
+  end
+
 
 end

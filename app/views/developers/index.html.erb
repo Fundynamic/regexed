@@ -13,4 +13,25 @@
       <%= @developer.skills %>
     </p>
   </div>
+  <div class="feed">
+    <h3>Voor jou relevant</h3>
+    <table class="opportunities">
+      <thead>
+        <tr>
+          <th>Titel</th>
+          <th>Start</th>
+          <th>Einde</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @opportunities.each do |opportunity| %>
+        <tr class="opportunity">
+          <td><%= opportunity.title %></td>
+          <td><%= opportunity.start_date %></td>
+          <td><%= opportunity.end_date %></td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
