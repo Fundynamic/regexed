@@ -9,4 +9,12 @@
       <%= @organisation.skills %>
     </p>
   </div>
+  <div class="opportunities">
+    <h3>Lopende opdrachten</h3>
+    <% @organisation.opportunities.each do |opportunity| %>
+      <p>
+        <%= opportunity.title %>
+      </p>
+    <% end %>
+  </div>
 </div>
