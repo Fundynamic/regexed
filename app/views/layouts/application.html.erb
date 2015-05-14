@@ -11,13 +11,17 @@
 <div class="page-header">
   <ul>
     <li><%= link_to('Home', root_path) %> </li>
-    <li>
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <li>
         <% if current_user.developer? %>
           <%= link_to('Profiel', edit_developer_path(current_user.role_developer)) %>
         <% elsif current_user.organisation? %>
           <%= link_to('Profiel', edit_organisation_path(current_user.role_organisation)) %>
         <% end %>
+      </li>
+    <% end %>
+    <li>
+      <% if user_signed_in? %>
         <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
       <% else %>
         <%= link_to('Inloggen', new_user_session_path)  %>
