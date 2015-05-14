@@ -1,7 +1,7 @@
 class OrganisationsController < ApplicationController
 
   def index
-    flash[:notice] = t(".success")
+    @organisation = current_user.role_organisation
   end
 
   def new
