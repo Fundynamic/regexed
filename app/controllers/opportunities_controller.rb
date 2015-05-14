@@ -10,7 +10,18 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
+    @opportunity = organisation.opportunities.build(params[:opportunity])
+    if @opportunity.save
+      flash[:notice] = t(".success")
+      redirect_to :root
+    else
+      render :new
+    end
+  end
 
+private
+  def organisation
+    current_user.role_organisation
   end
 
 end
