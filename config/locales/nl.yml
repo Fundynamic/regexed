@@ -9,6 +9,11 @@ nl:
         last_name: Achternaam
         available: Beschikbaar per
         pitch: Beschrijf je persoonlijkheid in 256 karakters. Kort. Duidelijk.
+      opportunity:
+        title: Titel
+        teaser: Omschrijving
+        start_date: Start datum
+        end_date: Eind datum (indien van toepassing)
     errors:
       messages:
         blank: mag niet leeg zijn
@@ -17,6 +22,10 @@ nl:
           Het formulier voldoet niet aan de voorwaarden. Corrigeer en probeer opnieuw.
         header:
           Woops
+  opportunities:
+    create:
+      success: Opdracht aangemaakt
+
   developers:
     create:
       succes: Je bent succesvol aangemeld als Developer
