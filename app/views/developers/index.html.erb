@@ -1,10 +1,12 @@
 <div class="page-developers">
   <div class="profiel">
-    <p>
-      <%= @developer.first_name %> <%= @developer.last_name %>
-    </p>
+    <h3><%= @developer.first_name %> <%= @developer.last_name %></h3>
     <p>
       <%= @developer.pitch %>
+    </p>
+    <h3>Beschikbaar per</h3>
+    <p>
+      <%= @developer.available %>
     </p>
   </div>
 </div>
