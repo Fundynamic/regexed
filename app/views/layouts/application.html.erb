@@ -15,28 +15,33 @@
 <body>
 
 <div class="page-header">
+  <ul class="regexed">
+    <li>
+      Regexed
+    </li>
+  </ul>
   <ul>
     <% if user_signed_in? %>
       <li>
         <% if current_user.developer? %>
-          <%= link_to('Feed', developers_path)  %>
+          <%= link_to('Feed', developers_path, class: "button ternary bordered")  %>
         <% elsif current_user.organisation? %>
-          <%= link_to('Feed', organisations_path) %>
+          <%= link_to('Feed', organisations_path, class: "button ternary bordered") %>
         <% end %>
       </li>
       <li>
         <% if current_user.developer? %>
-          <%= link_to('Profiel', edit_developer_path(current_user.role_developer)) %>
+          <%= link_to('Profiel', edit_developer_path(current_user.role_developer), class: "button ternary bordered") %>
         <% elsif current_user.organisation? %>
-          <%= link_to('Profiel', edit_organisation_path(current_user.role_organisation)) %>
+          <%= link_to('Profiel', edit_organisation_path(current_user.role_organisation), class: "button ternary bordered") %>
         <% end %>
       </li>
     <% end %>
     <% if user_signed_in? %>
     <li>
-      <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
+      <%= link_to('&#128275; Uitloggen'.html_safe, destroy_user_session_path, :method => :delete, class: "button ternary bordered") %>
     <% else %>
-      <%= link_to('Inloggen', new_user_session_path, class: "button ternary bordered")  %>
+      <%= link_to('&#128274; Inloggen'.html_safe, new_user_session_path, class: "button ternary bordered")  %>
     </li>
     <% end %>
     <li>
