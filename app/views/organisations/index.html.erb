@@ -10,10 +10,16 @@
     </p>
   </div>
   <div class="opportunities">
-    <h3>Lopende opdrachten</h3>
-    <% @organisation.opportunities.each do |opportunity| %>
+    <h3>Opdrachten</h3>
+    <% if @organisation.opportunities.any? %>
+      <% @organisation.opportunities.each do |opportunity| %>
+        <p>
+          <%= opportunity.title %>
+        </p>
+      <% end %>
+    <% else %>
       <p>
-        <%= opportunity.title %>
+        <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "button primary" %>
       </p>
     <% end %>
   </div>
