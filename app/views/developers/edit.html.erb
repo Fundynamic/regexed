@@ -4,7 +4,6 @@
     Vul hier in hoe je heet wat je kunt en wat je graag zou willen leren.
     Geef ook per wanneer je beschikbaar bent, wel zo handig.
   </p>
-  <%= raise @developer %>
   <%= form_for @developer do |f| %>
     <%= f.error_messages %>
 
@@ -21,8 +20,8 @@
       <%= f.text_field :skills %>
     </div>
     <div class="field">
-      <%= f.label :availability %><br />
-      <%= f.date_field :availability %>
+      <%= f.label :available %><br />
+      <%= f.date_field :available %>
     </div>
 
     <div class="actions">
