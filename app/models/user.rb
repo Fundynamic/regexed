@@ -31,13 +31,17 @@ class User < ActiveRecord::Base
   end
 
   def needs_role?
-    self.roles.empty?
+    return true if self.roles.empty?
+    roles.each do |role|
+      return true if role.valid? == false
+    end
+    return false
   end
 
 private
   def is_role?(role_type)
     roles.each do |role|
-      return true if role.type == role_type
+      return true if role.type == role_type && role.valid?
     end
     false
   end
