@@ -13,7 +13,7 @@
     <% if user_signed_in? %>
       <li>
         <% if current_user.developer? %>
-          <%= link_to('Feed', developers_path) %>
+          <%= link_to('Feed', developers_path)  %>
         <% elsif current_user.organisation? %>
           <%= link_to('Feed', developers_path) %>
         <% end %>
@@ -30,7 +30,7 @@
     <li>
       <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
     <% else %>
-      <%= link_to('Inloggen', new_user_session_path)  %>
+      <%= link_to('Inloggen', new_user_session_path, class: "button ternary bordered")  %>
     </li>
     <% end %>
     <li>
