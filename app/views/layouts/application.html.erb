@@ -29,6 +29,11 @@
           <%= link_to('Feed', organisations_path, class: "button ternary bordered") %>
         <% end %>
       </li>
+      <% if current_user.organisation? %>
+        <li>
+          <%= link_to('Plaats opdracht', new_opportunity_path, class: "button secondary bordered") %>
+        </li>
+      <% end %>
       <li>
         <% if current_user.developer? %>
           <%= link_to('Profiel', edit_developer_path(current_user.role_developer), class: "button ternary bordered") %>

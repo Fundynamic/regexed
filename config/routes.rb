@@ -11,7 +11,7 @@ Regexed::Application.routes.draw do
     get 'aanmelden/organisatie' => 'organisations#new' #alias
     get 'aanmelden/developer' => 'developers#new' # alias
 
-    resources :opportunity
+    resources :opportunities
     resources :developers
     resources :organisations
     # todo company/organisation
