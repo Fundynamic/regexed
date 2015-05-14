@@ -2,18 +2,15 @@ Regexed::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'aanmelden' => 'wizard#index'
-
-  get 'aanmelden/organisatie' => 'organisations#new' #alias
-  get 'aanmelden/developer' => 'developers#new' # alias
-  resources :developers, only: [:index, :new, :create]
-  resources :organisations, only: [:index, :new, :create]
-
   devise_for :users
 
   root to: 'welcome#index'
 
   authenticate :user do
+    get 'aanmelden' => 'wizard#index'
+    get 'aanmelden/organisatie' => 'organisations#new' #alias
+    get 'aanmelden/developer' => 'developers#new' # alias
+
     resources :opportunity
     resources :developers
     resources :organisations
