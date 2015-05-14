@@ -1,7 +1,22 @@
 class Opportunity < ActiveRecord::Base
 
-  attr_accessor :title, :teaser, :start_date, :end_date
+  attr_accessible :title, :teaser, :start_date, :end_date
 
-  validates_presence_of :title, :teaser, :start_date, :end_date
+  validates_presence_of :title, :teaser, :start_date
+  validate :ensure_end_date_is_valid
+
+  belongs_to :organisation
+
+  # meaning
+  # IF it is set, it should be AFTER start_date
+  def ensure_end_date_is_valid
+    return true if end_date.blank?
+    unless start_date.blank?
+      return true if end_date > start_date
+    end
+
+    errors.add(:end_date, :invalid)
+  end
+
 
 end
