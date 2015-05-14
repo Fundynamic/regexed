@@ -1,7 +1,7 @@
 class DevelopersController < ApplicationController
 
   def index
-
+    @developer = current_user.role_developer
   end
 
   def new
@@ -9,19 +9,25 @@ class DevelopersController < ApplicationController
   end
 
   def edit
-    puts "id is #{params[:id]}"
-    puts "dev is #{Developer.find(params[:id])}"
     @developer = Developer.find(params[:id])
   end
 
+  def update
+    @developer = Developer.find(params[:id])
+    if @developer.update_attributes(params[:developer])
+      flash[:notice] = t(".success")
+      render :index
+    else
+      render :edit
+    end
+  end
+
   def create
-    puts "developer params #{params[:developer]}"
     @developer = Developer.new(params[:developer])
-    puts "developer to be created #{@developer}"
     current_user.roles << @developer
     if @developer.save
       flash[:notice] = t(".success")
-      redirect_to action: "index"
+      render :index
     else
       render :new
     end
