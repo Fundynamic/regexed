@@ -8,6 +8,7 @@ nl:
         first_name: Voornaam
         last_name: Achternaam
         available: Beschikbaar per
+        pitch: Beschrijf je persoonlijkheid in 256 karakters. Kort. Duidelijk.
     errors:
       messages:
         blank: mag niet leeg zijn
