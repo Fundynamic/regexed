@@ -7,6 +7,7 @@ nl:
       developer:
         first_name: Voornaam
         last_name: Achternaam
+        available: Beschikbaar per
     errors:
       messages:
         blank: mag niet leeg zijn
