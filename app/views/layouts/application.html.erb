@@ -10,8 +10,14 @@
 
 <div class="page-header">
   <ul>
-    <li><%= link_to('Home', root_path) %> </li>
     <% if user_signed_in? %>
+      <li>
+        <% if current_user.developer? %>
+          <%= link_to('Feed', developers_path) %>
+        <% elsif current_user.organisation? %>
+          <%= link_to('Feed', developers_path) %>
+        <% end %>
+      </li>
       <li>
         <% if current_user.developer? %>
           <%= link_to('Profiel', edit_developer_path(current_user.role_developer)) %>
@@ -20,12 +26,15 @@
         <% end %>
       </li>
     <% end %>
+    <% if user_signed_in? %>
     <li>
-      <% if user_signed_in? %>
-        <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
-      <% else %>
-        <%= link_to('Inloggen', new_user_session_path)  %>
-      <% end %>
+      <%= link_to('Uitloggen', destroy_user_session_path, :method => :delete) %>
+    <% else %>
+      <%= link_to('Inloggen', new_user_session_path)  %>
+    </li>
+    <% end %>
+    <li>
+
     </li>
   </ul>
   <div style="clear: both"></div>
