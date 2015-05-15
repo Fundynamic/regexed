@@ -6,4 +6,5 @@ describe Developer do
   it { should validate_presence_of(:skills) }
   it { should validate_presence_of(:pitch) }
   it { should validate_presence_of(:available) }
+  it { should validate_presence_of(:area) }
 end

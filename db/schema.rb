@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514191953) do
+ActiveRecord::Schema.define(version: 20150515082846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20150514191953) do
     t.string   "name"
     t.string   "skills"
     t.string   "pitch"
+    t.string   "area"
+    t.decimal  "lat",        precision: 8, scale: 2, default: 0.0
+    t.decimal  "lon",        precision: 8, scale: 2, default: 0.0
   end
 
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
