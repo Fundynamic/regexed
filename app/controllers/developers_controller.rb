@@ -2,7 +2,7 @@ class DevelopersController < ApplicationController
 
   def index
     @developer = current_user.role_developer
-    @opportunities = Opportunity.starting_since(@developer.available)
+    @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
   end
 
   def new

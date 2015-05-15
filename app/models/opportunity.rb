@@ -22,5 +22,9 @@ class Opportunity < ActiveRecord::Base
     where("start_date >= :start_date", start_date: start_date)
   end
 
+  def self.ordered_by_start_date
+    order(:start_date)
+  end
+
 
 end
