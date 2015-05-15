@@ -27,8 +27,8 @@
     <% @opportunities.each do |opportunity| %>
         <tr class="opportunity">
           <td><%= opportunity.title %></td>
-          <td><%= opportunity.start_date %></td>
-          <td><%= opportunity.end_date %></td>
+          <td><%= l(opportunity.start_date, format: :datepicker) %></td>
+          <td><%= l(opportunity.end_date, format: :datepicker) %></td>
         </tr>
     <% end %>
       </tbody>

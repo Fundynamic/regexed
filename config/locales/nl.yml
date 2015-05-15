@@ -33,3 +33,17 @@ nl:
   organisations:
     create:
       succes: Je bent succesvol aangemeld als Organisatie
+  time:
+    formats:
+      datepicker: '%d-%m-%Y'
+      default: '%d %B %Y %H:%M'
+      full: '%A %e %B %Y om %H:%m:%S'
+      long: '%d %B %Y, %H:%M uur'
+      long_with_time: '%d-%m-%Y %H:%M'
+      only_date: '%d %b %Y'
+      only_time: '%H:%M'
+      short: '%d %b %Y %H:%M'
+      week_num: '%V'
+      only_month_short: '%b'
+      only_month: '%B'
+      month_with_year: '%B %Y'
