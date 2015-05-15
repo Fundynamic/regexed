@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'faker'
 end
 
 group :doc do
@@ -54,6 +55,8 @@ group :test do
 
   gem 'coveralls', require: false
   gem 'database_cleaner'
+
+  gem 'faker'
 end
 
 # Use ActiveModel has_secure_password
