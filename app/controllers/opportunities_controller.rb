@@ -19,6 +19,23 @@ class OpportunitiesController < ApplicationController
     end
   end
 
+  def like
+    @opportunity = Opportunity.find(params[:id])
+    role = if current_user.developer?
+             current_user.role_developer
+           elsif current_user.organisation?
+             current_user.role_organisation
+           else
+             raise "Cannot like opportunity - invalid role"
+           end
+
+    like = @opportunity.likes.build
+    like.role_id = role.id
+    like.save!
+    flash[:notice] = t(".liked")
+    redirect_to :root
+  end
+
 private
   def organisation
     current_user.role_organisation

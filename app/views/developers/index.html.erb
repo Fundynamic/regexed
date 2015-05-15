@@ -30,7 +30,7 @@
           <td><%= opportunity.title %></td>
           <td><%= l(opportunity.start_date, format: :datepicker) %></td>
           <td><%= l(opportunity.end_date, format: :datepicker) %></td>
-          <td></td>
+          <td><%= link_to("Like!", like_opportunity_path(opportunity), method: :post) %></td>
         </tr>
     <% end %>
       </tbody>

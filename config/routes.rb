@@ -11,8 +11,11 @@ Regexed::Application.routes.draw do
     get 'aanmelden/organisatie' => 'organisations#new' #alias
     get 'aanmelden/developer' => 'developers#new' # alias
 
-    resources :opportunities
+    resources :opportunities, :shallow => true do
+      post 'like', on: :member
+    end
     resources :developers
+
     resources :organisations
     # todo company/organisation
   end

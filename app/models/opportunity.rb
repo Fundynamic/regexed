@@ -7,6 +7,8 @@ class Opportunity < ActiveRecord::Base
 
   belongs_to :organisation
 
+  has_many :likes
+
   # meaning
   # IF it is set, it should be AFTER start_date
   def ensure_end_date_is_valid
