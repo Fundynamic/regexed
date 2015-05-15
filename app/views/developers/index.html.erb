@@ -30,7 +30,15 @@
           <td><%= opportunity.title %></td>
           <td><%= l(opportunity.start_date, format: :datepicker) %></td>
           <td><%= l(opportunity.end_date, format: :datepicker) %></td>
-          <td><%= link_to("Like!", like_opportunity_path(opportunity), method: :post) %></td>
+          <td>
+            <p>
+            <% unless opportunity.liked_by(@developer) %>
+              <%= link_to("Like!", like_opportunity_path(opportunity), method: :post, class: "button secondary") %>
+            <% else %>
+              <span class="button ternary bordered">Liked!</span>
+            <% end %>
+            </p>
+          </td>
         </tr>
     <% end %>
       </tbody>

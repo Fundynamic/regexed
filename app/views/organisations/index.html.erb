@@ -14,7 +14,7 @@
     <% if @organisation.opportunities.any? %>
       <% @organisation.opportunities.each do |opportunity| %>
         <p>
-          <%= opportunity.title %> (<%= opportunity.likes.count %> likes)
+          <%= opportunity.title %> (<strong><%= opportunity.likes.count %> likes</strong>)
         </p>
       <% end %>
     <% else %>

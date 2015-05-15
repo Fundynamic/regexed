@@ -28,5 +28,13 @@ class Opportunity < ActiveRecord::Base
     order(:start_date)
   end
 
+  def liked_by(role)
+    puts "checking of role #{role.id} likes #{self.id}"
+    selected = likes.select do |like|
+      like.role_id == role.id
+    end
+    puts "selected -> #{selected}"
+    !selected.blank?
+  end
 
 end

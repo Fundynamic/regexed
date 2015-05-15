@@ -17,7 +17,7 @@ class DevelopersController < ApplicationController
     @developer = Developer.find(params[:id])
     if @developer.update_attributes(params[:developer])
       flash[:notice] = t(".success")
-      render :index
+      redirect_to :root
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class DevelopersController < ApplicationController
     current_user.roles << @developer
     if @developer.save
       flash[:notice] = t(".success")
-      render :index
+      redirect_to :root
     else
       render :new
     end
