@@ -21,6 +21,7 @@
           <th>Titel</th>
           <th>Start</th>
           <th>Einde</th>
+          <th>Acties</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,7 @@
           <td><%= opportunity.title %></td>
           <td><%= l(opportunity.start_date, format: :datepicker) %></td>
           <td><%= l(opportunity.end_date, format: :datepicker) %></td>
+          <td></td>
         </tr>
     <% end %>
       </tbody>
