@@ -14,7 +14,10 @@ Regexed::Application.routes.draw do
     resources :opportunities, :shallow => true do
       post 'like', on: :member
     end
-    resources :developers
+
+    resources :developers, :shallow => true do
+      post 'increase_likes', on: :member
+    end
 
     resources :organisations
     # todo company/organisation

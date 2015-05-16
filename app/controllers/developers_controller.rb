@@ -13,6 +13,13 @@ class DevelopersController < ApplicationController
     @developer = Developer.find(params[:id])
   end
 
+  def increase_likes
+    @developer = Developer.find(params[:id])
+    @developer.likes_budget += 10
+    @developer.save!
+    redirect_to :root
+  end
+
   def update
     @developer = Developer.find(params[:id])
     if @developer.update_attributes(params[:developer])

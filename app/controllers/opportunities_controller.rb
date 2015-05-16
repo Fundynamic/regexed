@@ -29,10 +29,10 @@ class OpportunitiesController < ApplicationController
              raise "Cannot like opportunity - invalid role"
            end
 
-    like = @opportunity.likes.build
-    like.role_id = role.id
-    like.save!
-    flash[:notice] = t(".liked")
+    raise "Not allowed to like" unless role.can_like?
+
+    role.like!(@opportunity)
+    flash[:notice] = t(".liked_html", {title: @opportunity.title})
     redirect_to :root
   end
 

@@ -3,4 +3,16 @@ class Role < ActiveRecord::Base
 
   belongs_to :user
 
+  def can_like?
+    likes_budget > 0
+  end
+
+  def like!(opportunity)
+    like = opportunity.likes.build
+    like.role_id = self.id
+    like.save!
+    self.update_attribute(:likes_budget, (self.likes_budget - 1))
+    like
+  end
+
 end

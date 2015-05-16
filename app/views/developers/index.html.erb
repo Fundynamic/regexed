@@ -12,6 +12,20 @@
     <p>
       <%= @developer.skills %>
     </p>
+    <h3>Likes</h3>
+      <% if @developer.can_like? %>
+      <p>
+        <%= @developer.likes_budget %> likes ter beschikking
+      </p>
+      <% else %>
+      <p>
+        Je kunt niet reageren op opdrachten.<br/>
+      </p>
+      <p>
+        <%= link_to "Koop hier 10 likes voor 1 euro", increase_likes_developer_path(@developer), method: :post, class: "button primary" %>
+      </p>
+      <% end %>
+    </p>
   </div>
   <div class="feed">
     <h3>Voor jou relevant</h3>
@@ -32,11 +46,15 @@
           <td><%= l(opportunity.end_date, format: :datepicker) %></td>
           <td>
             <p>
-            <% unless opportunity.liked_by(@developer) %>
-              <%= link_to("Like!", like_opportunity_path(opportunity), method: :post, class: "button secondary") %>
-            <% else %>
-              <span class="button ternary bordered">Liked!</span>
-            <% end %>
+              <% if @developer.can_like? %>
+                <% unless opportunity.liked_by(@developer) %>
+                  <%= link_to("Like!", like_opportunity_path(opportunity), method: :post, class: "button secondary") %>
+                <% else %>
+                  <span class="button ternary bordered">Liked!</span>
+                <% end %>
+              <% else %>
+                <span class="button ternary bordered disabled">Like!</span>
+              <% end %>
             </p>
           </td>
         </tr>

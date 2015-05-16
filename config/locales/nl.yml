@@ -26,6 +26,9 @@ nl:
   opportunities:
     create:
       success: Opdracht aangemaakt
+    like:
+      liked_html:
+        Je hebt aangegeven interesse te hebben in %{title}
 
   developers:
     create:
@@ -33,6 +36,8 @@ nl:
   organisations:
     create:
       succes: Je bent succesvol aangemeld als Organisatie
+
+
   time:
     formats:
       datepicker: '%d-%m-%Y'
