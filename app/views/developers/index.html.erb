@@ -21,10 +21,10 @@
       <p>
         Je kunt niet reageren op opdrachten.<br/>
       </p>
-      <p>
-        <%= link_to "Koop hier 10 likes voor 1 euro", increase_likes_developer_path(@developer), method: :post, class: "button primary" %>
-      </p>
       <% end %>
+      <p>
+        <%= link_to "Koop 10 likes", increase_likes_developer_path(@developer), method: :post, class: "button primary" %>
+      </p>
     </p>
   </div>
   <div class="feed">
@@ -43,7 +43,11 @@
         <tr class="opportunity">
           <td><%= opportunity.title %></td>
           <td><%= l(opportunity.start_date, format: :datepicker) %></td>
-          <td><%= l(opportunity.end_date, format: :datepicker) %></td>
+          <td><% if opportunity.end_date.blank? %>
+                Geen eind datum
+              <% else %>
+                <%= l(opportunity.end_date, format: :datepicker) %></td>
+              <% end %>
           <td>
             <p>
               <% if @developer.can_like? %>
