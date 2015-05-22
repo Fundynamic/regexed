@@ -4,5 +4,4 @@ class Like < ActiveRecord::Base
 
   validates_presence_of :role, :opportunity
 
-
 end

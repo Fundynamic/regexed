@@ -3,4 +3,7 @@ class Developer < Role
 
   attr_accessible :first_name, :last_name, :skills, :available, :pitch, :area
 
+  def name
+    first_name + " " + last_name
+  end
 end

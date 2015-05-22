@@ -14,7 +14,12 @@
     <% if @organisation.opportunities.any? %>
       <% @organisation.opportunities.each do |opportunity| %>
         <p>
-          <%= opportunity.title %> (<strong><%= opportunity.likes.count %> likes</strong>)
+          <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben interesse</strong>)
+          <% opportunity.likes.each do |like| %>
+          <p>
+            <%= like.role.name %> - beschikbaar per <%= like.role.available %>
+          </p>
+          <% end %>
         </p>
       <% end %>
     <% else %>
