@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.5'
+gem 'rails', '4.1'
 gem 'dynamic_form' # allows f.error_messages
 gem 'protected_attributes' # allows attr_accessible
 
