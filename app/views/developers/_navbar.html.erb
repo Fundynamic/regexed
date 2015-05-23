@@ -1,0 +1,9 @@
+<li>
+  <%= link_to('Opdrachten', developers_path) %>
+</li>
+<li>
+  <%= link_to "Verhoog krediet", increase_likes_developer_path(current_user.role_developer), method: :post, class: "button primary" %>
+</li>
+<li>
+  <%= link_to('Profiel', edit_developer_path(current_user.role_developer)) %>
+</li>
