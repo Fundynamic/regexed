@@ -1,31 +1,18 @@
-<div class="page-organisations">
-  <div class="profiel">
-    <h3><%= @organisation.name %></h3>
+<h3>Opdrachten</h3>
+<% if @organisation.opportunities.any? %>
+  <% @organisation.opportunities.each do |opportunity| %>
     <p>
-      <%= @organisation.pitch %>
-    </p>
-    <h3>Skills</h3>
-    <p>
-      <%= @organisation.skills %>
-    </p>
-  </div>
-  <div class="opportunities">
-    <h3>Opdrachten</h3>
-    <% if @organisation.opportunities.any? %>
-      <% @organisation.opportunities.each do |opportunity| %>
-        <p>
-          <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben interesse</strong>)
-          <% opportunity.likes.each do |like| %>
-          <p>
-            <%= like.role.name %> - beschikbaar per <%= like.role.available %>
-          </p>
-          <% end %>
-        </p>
-      <% end %>
-    <% else %>
+      <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben
+      interesse</strong>)
+      <% opportunity.likes.each do |like| %>
       <p>
-        <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "button primary" %>
+        <%= like.role.name %> - beschikbaar per <%= like.role.available %>
       </p>
     <% end %>
-  </div>
-</div>
+    </p>
+  <% end %>
+<% else %>
+  <p>
+    <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "button primary" %>
+  </p>
+<% end %>

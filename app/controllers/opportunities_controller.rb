@@ -12,6 +12,7 @@ class OpportunitiesController < ApplicationController
   def create
     @opportunity = organisation.opportunities.build(params[:opportunity])
     if @opportunity.save
+      raise "foo"
       flash[:notice] = t(".success")
       redirect_to :root
     else

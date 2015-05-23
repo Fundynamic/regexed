@@ -1,69 +1,49 @@
-<div class="page-developers">
-  <div class="profiel">
-    <h3><%= @developer.first_name %> <%= @developer.last_name %></h3>
-    <p>
-      <%= @developer.pitch %>
-    </p>
-    <h3>Beschikbaar per</h3>
-    <p>
-      <%= @developer.available %>
-    </p>
-    <h3>Skills</h3>
-    <p>
-      <%= @developer.skills %>
-    </p>
-    <h3>Likes</h3>
-      <% if @developer.can_like? %>
-      <p>
-        <%= @developer.likes_budget %> likes ter beschikking
-      </p>
-      <% else %>
-      <p>
-        Je kunt niet reageren op opdrachten.<br/>
-      </p>
-      <% end %>
-      <p>
-        <%= link_to "Koop 10 likes", increase_likes_developer_path(@developer), method: :post, class: "button primary" %>
-      </p>
-    </p>
-  </div>
-  <div class="feed">
-    <h3>Voor jou relevant</h3>
-    <table class="opportunities">
-      <thead>
-        <tr>
-          <th>Titel</th>
-          <th>Start</th>
-          <th>Einde</th>
-          <th>Acties</th>
-        </tr>
-      </thead>
-      <tbody>
+<div>
+  <h1>Opdrachten</h1>
+  <span>
+    Op basis van jouw <a href="#">voorkeuren</a> tonen we de meest relevante opdrachten. Indien je interesse hebt, klik dan op de knop "Ik heb interesse!".
+    De organisatie zal op de hoogte gebracht worden van jouw interesse i.c.m. je contact gegevens. Als het interesse wederzijds is zal men contact opnemen.
+
+  </span>
+  <table class="opportunities">
+    <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Organisatie</th>
+      <th>Start</th>
+      <th>Einde</th>
+      <th>Acties</th>
+    </tr>
+    </thead>
+    <tbody>
     <% @opportunities.each do |opportunity| %>
-        <tr class="opportunity">
-          <td><%= opportunity.title %></td>
-          <td><%= l(opportunity.start_date, format: :datepicker) %></td>
-          <td><% if opportunity.end_date.blank? %>
-                Geen eind datum
-              <% else %>
-                <%= l(opportunity.end_date, format: :datepicker) %></td>
-              <% end %>
+      <tr>
+        <td><%= opportunity.title %> </td>
+        <td><%= opportunity.organisation.name%> </td>
+        <td><%= l(opportunity.start_date, format: :datepicker) %></td>
+        <td>
+          <% if opportunity.end_date.blank? %>
+            Geen eind datum
+          <% else %>
+            <%= l(opportunity.end_date, format: :datepicker) %></td>
+          <% end %>
           <td>
             <p>
               <% if @developer.can_like? %>
                 <% unless opportunity.liked_by(@developer) %>
-                  <%= link_to("Like!", like_opportunity_path(opportunity), method: :post, class: "button secondary") %>
-                <% else %>
-                  <span class="button ternary bordered">Liked!</span>
+                  <%= link_to("Ik heb interesse!", like_opportunity_path(opportunity), method: :post, class: "btn btn-secondary") %>
+                  <% else %>
+                <span>
+                  Al geliked
+                </span>
                 <% end %>
               <% else %>
                 <span class="button ternary bordered disabled">Like!</span>
               <% end %>
             </p>
           </td>
-        </tr>
+          </tr>
     <% end %>
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </div>

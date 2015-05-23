@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
     get_role Organisation.to_s
   end
 
+  def role_name
+    return "organisation" if role_organisation
+    return "developer" if role_developer
+    nil
+  end
+
   def admin?
     is_role? Admin.to_s
   end

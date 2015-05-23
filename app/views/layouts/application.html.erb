@@ -44,7 +44,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default ">
   <div class="container">
     <div class="navbar-inner">
       <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -56,32 +56,9 @@
       <div class="container nav-collapse">
         <ul class="nav pull-right">
           <% if user_signed_in? %>
-            <li>
-              <% if current_user.developer? %>
-                <%= link_to('Feed', developers_path, class: "button ternary bordered")  %>
-              <% elsif current_user.organisation? %>
-                <%= link_to('Feed', organisations_path, class: "button ternary bordered") %>
-              <% end %>
-            </li>
-            <% if current_user.organisation? %>
-              <li>
-                <%= link_to('Plaats opdracht', new_opportunity_path, class: "button secondary bordered") %>
-              </li>
-            <% end %>
-            <li>
-              <% if current_user.developer? %>
-                <%= link_to('Profiel', edit_developer_path(current_user.role_developer), class: "button ternary bordered") %>
-              <% elsif current_user.organisation? %>
-                <%= link_to('Profiel', edit_organisation_path(current_user.role_organisation), class: "button ternary bordered") %>
-              <% end %>
-            </li>
-          <% end %>
-          <% if user_signed_in? %>
-            <li>
               <%= link_to('&#128275; Uitloggen'.html_safe, destroy_user_session_path, :method => :delete, class: "btn btn-default") %>
             <% else %>
               <%= link_to('&#128274; Inloggen'.html_safe, new_user_session_path, class: "btn btn-default")  %>
-            </li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->
@@ -90,18 +67,27 @@
 </nav>
 
 <div class="container">
-  <div class="row">
-    <div class="span9">
-      <%= bootstrap_flash %>
-      <%= yield %>
-    </div>
-  </div><!--/row-->
+<% if user_signed_in? && current_user.needs_role? == false %>
+  <div id="sidebar-wrapper">
+    <%= render("#{current_user.role_name}s/sidebar") %>
+  </div>
+  <div id="page-content-wrapper">
+    <%= bootstrap_flash %>
+    <%= yield %>
+  </div>
+<% else %>
 
-  <footer>
-    <p>&copy; Fundynamic 2015</p>
-  </footer>
+  <%= bootstrap_flash %>
+  <%= yield %>
+
+<% end %>
 
 </div> <!-- /container -->
 
+<div class="container">
+  <footer>
+    <p>&copy; Fundynamic 2015</p>
+  </footer>
+</div>
 </body>
 </html>
