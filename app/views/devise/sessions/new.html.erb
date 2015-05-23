@@ -12,9 +12,7 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-    <div class="actions">
-      <%= link_to 'Log in', "#", :onclick=>"$('#new_user').submit()", class: "button ternary bordered" %>
-    </div>
+  <%= f.submit 'Log in', class: "btn btn-primary" %>
   <% end %>
 
   <%= render "devise/shared/links" %>
