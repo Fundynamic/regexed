@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <%= f.label :skills %><br />
-      <%= f.text_field :skills, class: "form-control" %>
+      <%= f.text_field :skills, class: "form-control", data: { role: "skills" } %>
     </div>
     <div class="form-group">
       <%= f.label :available %><br />
@@ -30,3 +30,9 @@
   <% end %>
 
 </div>
+
+<script>
+  $(function() {
+    $("[data-role='skills").tokenfield();
+  });
+</script>

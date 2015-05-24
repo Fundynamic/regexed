@@ -26,7 +26,10 @@ gem 'jquery-rails'
 
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails" #, '3.2.0' ->need to upgrade to rails 4.1
+gem "twitter-bootstrap-rails"
+
+# for autocomplete + tags
+gem 'bootstrap_tokenfield_rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
