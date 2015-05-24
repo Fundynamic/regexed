@@ -1,7 +1,11 @@
 class OrganisationsController < ApplicationController
 
   def index
-    @organisation = current_user.role_organisation
+    if current_user
+      @organisation = current_user.role_organisation
+    else
+      render :organisaties
+    end
   end
 
   def new

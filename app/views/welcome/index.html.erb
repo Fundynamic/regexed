@@ -1,18 +1,29 @@
-<div class="row">
+<div class="row text-center">
   <div class="jumbotron .col-sm-12">
     <h1>Duurzaam ondernemen</h1>
     <h2>Een netwerk opbouwen. Relevante opdrachten zoeken en vinden. Win-win situaties creeëren.</h2>
     <h2>Dat is duurzaam ondernemen.</h2>
     <h2>Dat is Regexed.</h2>
     <br/>
-    <%= render("acties") %>
+    <%= render("shared/acties") %>
   </div>
 </div>
-<a name="about"></a>
-<div class="row">
-  <div class="col-md-12">
+<div class="row text-center">
+  <div class="col-md-offset-2 col-md-8">
     <p>
-      <h1></h1>
+      <h1>Voor zzp'rs & freelancers</h1>
+      <p>Jij bent een ondernemer. Je zoekt niet alleen werk, maar wil je ook graag een netwerk opbouwen waarin je samen met je klanten successen kan behalen. Als je elkaar eenmaal hebt gevonden en de samenwerking is goed, dan wil je ook snel kunnen zien of je elkaar verder kunt helpen in de toekomst</p>
+      <%= link_to "Meer info", developers_path, class: "btn btn-info"%>
+      <%= link_to "Meld je aan (gratis!)", new_user_registration_path, class: "btn btn-primary" %>
+    </p>
+  </div>
+  <div class="col-md-offset-2 col-md-8">
+    <p>
+      <h1>Voor organisaties</h1>
+      <p>Je hebt werk en zoekt flexibele professionals om je te helpen. Na een samenwerking wil je graag met ze in contact blijven en weten wanneer ze weer beschikbaar zijn mocht je in de toekomst weer wat hebben.</p>
+      <p> Als je een nieuwe opdracht hebt dan wil je eigenlijk meteen zien wie de beste professional is voor dat moment zodat je meteen contact kan opnemen. Je bespaart jezelf tijd en moeite doordat je alleen die mensen hoeft te benaderen die werkelijk op jou zitten te wachten</p>
+      <%= link_to "Meer info", organisations_path, class: "btn btn-info"%>
+      <%= link_to "Meld je aan (gratis!)", new_user_registration_path, class: "btn btn-primary" %>
     </p>
   </div>
 </div>

@@ -12,12 +12,4 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def developers
-
-  end
-
-  def organisaties
-
-  end
-
 end

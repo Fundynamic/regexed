@@ -1,8 +1,12 @@
 class DevelopersController < ApplicationController
 
   def index
-    @developer = current_user.role_developer
-    @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
+    if current_user
+      @developer = current_user.role_developer
+      @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
+    else
+      render :developers
+    end
   end
 
   def new

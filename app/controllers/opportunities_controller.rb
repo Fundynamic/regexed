@@ -1,7 +1,6 @@
 class OpportunitiesController < ApplicationController
 
   def index
-
   end
 
   def new
