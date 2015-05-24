@@ -1,0 +1,4 @@
+.vertical-container .row {
+  display: table;
+  width: 100%;
+}

@@ -63,8 +63,12 @@
         <% if user_signed_in? && current_user.needs_role? == false %>
           <%= render("#{current_user.role_name}s/navbar") %>
         <% else %>
-          <li><a href="#about">Hoe werkt het?</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li>
+            <%= link_to "Professionals", developers_path, class: "btn btn-link" %>
+          </li>
+          <li>
+            <%= link_to "Organisaties", organisaties_path, class: "btn btn-link" %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -83,10 +87,8 @@
 </nav>
 
 <div class="container-fluid">
-  <div class="row">
-    <%= bootstrap_flash %>
-    <%= yield %>
-  </div>
+  <%= bootstrap_flash %>
+  <%= yield %>
 </div>
 <!-- /container -->
 

@@ -1,30 +1,31 @@
 <div class="row">
-  <div class="col-md-offset-3">
+  <div class="col-md-offset-4 col-md-4">
 
-    <h2>Aanmelden</h2>
+    <h2>Duurzaam ondernemen begint hier</h2>
+    <p>Een eigen netwerk opbouwen kost tijd, dat begrijpen we. Regexed maakt dit makkelijk.</p>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :email %><br/>
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :password %>
         <% if @validatable %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(Minimaal <%= @minimum_password_length %> tekens)</em>
         <% end %><br/>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :password_confirmation %><br/>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      <div class="form-group">
+        <%= f.submit "Aanmelden", class: "btn btn-primary form-control" %>
       </div>
     <% end %>
 

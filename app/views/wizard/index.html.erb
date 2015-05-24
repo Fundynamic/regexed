@@ -1,7 +1,11 @@
-<div class="page-aanmelden">
-  <h1>Wat ben je?</h1>
-  <div class="actions">
-    <%= link_to "Ik ben een developer", aanmelden_developer_path, class: "link developer-link" %>
-    <%= link_to "Ik ben een organisatie", aanmelden_organisatie_path, class: "link bedrijf-link" %>
+<div class="jumbotron">
+  <h1>Hoe kunnen wij je helpen?</h1>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to "Ik zoek werk", aanmelden_developer_path, class: "btn btn-primary btn-lg btn-block" %>
+  </div>
+  <div class="col-md-6">
+    <%= link_to "Ik zoek professionals", aanmelden_organisatie_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>
 </div>

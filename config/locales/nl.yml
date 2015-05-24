@@ -3,6 +3,7 @@ nl:
     attributes:
       user:
         password: Wachtwoord
+        password_confirmation: Bevestig wachtwoord
         email: E-mailadres
       developer:
         first_name: Voornaam
@@ -18,6 +19,15 @@ nl:
     errors:
       messages:
         blank: mag niet leeg zijn
+      models:
+        user:
+          attributes:
+            email:
+              taken: is al in gebruik
+            password:
+              too_short: is te kort
+            password_confirmation:
+              confirmation: is niet juist
       template:
         body:
           Het formulier voldoet niet aan de voorwaarden. Corrigeer en probeer opnieuw.

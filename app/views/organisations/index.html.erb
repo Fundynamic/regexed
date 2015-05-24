@@ -1,18 +1,20 @@
-<h3>Opdrachten</h3>
-<% if @organisation.opportunities.any? %>
-  <% @organisation.opportunities.each do |opportunity| %>
-    <p>
-      <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben
-      interesse</strong>)
-      <% opportunity.likes.each do |like| %>
+<div class="col-md-8 col-md-offset-2">
+  <h1>Opdrachten</h1>
+  <% if @organisation.opportunities.any? %>
+    <% @organisation.opportunities.each do |opportunity| %>
       <p>
-        <%= like.role.name %> - beschikbaar per <%= like.role.available %>
+        <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben
+        interesse</strong>)
+        <% opportunity.likes.each do |like| %>
+        <p>
+          <%= like.role.name %> - beschikbaar per <%= like.role.available %>
+        </p>
+      <% end %>
       </p>
     <% end %>
+  <% else %>
+    <p>
+      <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "btn btn-primary" %>
     </p>
   <% end %>
-<% else %>
-  <p>
-    <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "button primary" %>
-  </p>
-<% end %>
+</div>

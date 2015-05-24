@@ -5,6 +5,8 @@ Regexed::Application.routes.draw do
   devise_for :users
 
   root to: 'welcome#index'
+  get 'organisaties' => 'welcome#organisaties' #alias
+  get 'developers' => 'welcome#developers' # alias
 
   authenticate :user do
     get 'aanmelden' => 'wizard#index'
