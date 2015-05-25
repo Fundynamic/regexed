@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe Role do
 
+  context "validations" do
+    it { should belong_to(:user) }
+  end
+
   context "can_like?" do
     let(:role) { build(:role, likes_budget: likes_budget) }
     subject { role.can_like? }

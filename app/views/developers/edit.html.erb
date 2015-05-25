@@ -33,6 +33,16 @@
 
 <script>
   $(function() {
-    $("[data-role='skills").tokenfield();
+    $.get("/skills", function( data ) {
+      var skills = _.map(data, function(el) {
+        return el.name;
+      });
+      $("[data-role='skills").tokenfield({
+        autocomplete: {
+          source: skills,
+          delay: 100
+        }
+      });
+    });
   });
 </script>

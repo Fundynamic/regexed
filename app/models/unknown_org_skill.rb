@@ -1,0 +1,3 @@
+class UnknownOrgSkill < Skill
+
+end

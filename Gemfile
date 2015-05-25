@@ -28,6 +28,10 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+# jquery ui, used in tokenfield (below)
+gem 'jquery-ui-rails'
+gem 'underscore-rails'
+
 # for autocomplete + tags
 gem 'bootstrap_tokenfield_rails'
 

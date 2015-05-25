@@ -8,11 +8,12 @@ class Role < ActiveRecord::Base
   end
 
   def like!(opportunity)
+    return false if self.likes_budget <= 0
     like = opportunity.likes.build
     like.role_id = self.id
     like.save!
     self.update_attribute(:likes_budget, (self.likes_budget - 1))
-    like
+    true
   end
 
 end

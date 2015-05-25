@@ -27,6 +27,7 @@ class DevelopersController < ApplicationController
   def update
     @developer = Developer.find(params[:id])
     if @developer.update_attributes(params[:developer])
+      Skill.check_dev_skills_and_save_new_ones(@developer.skills)
       flash[:notice] = t(".success")
       redirect_to :root
     else
@@ -38,10 +39,12 @@ class DevelopersController < ApplicationController
     @developer = Developer.new(params[:developer])
     current_user.roles << @developer
     if @developer.save
+      Skill.check_dev_skills_and_save_new_ones(@developer.skills)
       flash[:notice] = t(".success")
       redirect_to :root
     else
       render :new
     end
   end
+
 end

@@ -3,6 +3,10 @@ class Developer < Role
 
   attr_accessible :first_name, :last_name, :skills, :available, :pitch, :area
 
+  before_save do
+    self.skills = self.skills.split(',').map(&:strip).map(&:downcase).join(",")
+  end
+
   def name
     first_name + " " + last_name
   end

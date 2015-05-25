@@ -14,6 +14,8 @@ Regexed::Application.routes.draw do
     get 'aanmelden/organisatie' => 'organisations#new' #alias
     get 'aanmelden/developer' => 'developers#new' # alias
 
+    resources :skills, only: [:index]
+
     resources :opportunities, :shallow => true do
       post 'like', on: :member
     end

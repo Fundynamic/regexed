@@ -1,0 +1,3 @@
+class UnknownDevSkill < Skill
+
+end
