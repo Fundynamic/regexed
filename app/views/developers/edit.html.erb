@@ -4,45 +4,7 @@
     Vul hier in hoe je heet wat je kunt en wat je graag zou willen leren.
     Geef ook per wanneer je beschikbaar bent, wel zo handig.
   </p>
-  <%= form_for @developer do |f| %>
-    <%= f.error_messages %>
 
-    <div class="form-group">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :skills %><br />
-      <%= f.text_field :skills, class: "form-control", data: { role: "skills" } %>
-    </div>
-    <div class="form-group">
-      <%= f.label :available %><br />
-      <%= f.date_field :available, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit "Opslaan", class: "btn btn-primary form-control" %>
-    </div>
-  <% end %>
+  <%= render "developers/form" %>
 
 </div>
-
-<script>
-  $(function() {
-    $.get("/skills", function( data ) {
-      var skills = _.map(data, function(el) {
-        return el.name;
-      });
-      $("[data-role='skills").tokenfield({
-        autocomplete: {
-          source: skills,
-          delay: 100
-        }
-      });
-    });
-  });
-</script>
