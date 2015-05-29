@@ -57,9 +57,14 @@ end
 def generate_n_opportunities_for(amount, organisation)
   amount.times do |index|
     start_date = Faker::Date.between(1.week.from_now, 6.months.from_now)
+    end_date = if rand(10) < 6
+                 start_date + ((rand * 100).to_i).days
+               else
+                 nil
+               end
     create_opportunity(organisation, {
                                      start_date: start_date,
-                                     end_date: start_date + ((rand * 100).to_i).days,
+                                     end_date: end_date,
                                      title: Faker::Lorem.sentence,
                                      teaser: Faker::Lorem.paragraph
                                    })
