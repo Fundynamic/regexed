@@ -31,6 +31,29 @@ describe Opportunity do
     end
   end
 
+  context ".liked_by" do
+    let(:opportunity) { create(:opportunity) }
+    subject { opportunity.liked_by(role) }
+
+    context "with role which does not like this opportunity" do
+      let(:role) { create(:role) }
+      it { should eq false }
+    end
+
+    context "with role which likes this opportunity" do
+      let(:role) { create(:role) }
+      before do
+        opportunity.likes << create(:like, role: role, opportunity: opportunity)
+      end
+      it { should eq true }
+    end
+
+    context "without role" do
+      let(:role) { nil }
+      it { should eq false }
+    end
+  end
+
   context ".starting_since" do
     let(:opportunity) { create(:opportunity) }
     before { opportunity }
