@@ -74,12 +74,16 @@ def generate_n_opportunities_for(amount, organisation)
                else
                  nil
                end
-    create_opportunity(organisation, {
+    opportunity = create_opportunity(organisation, {
                                      start_date: start_date,
                                      end_date: end_date,
                                      title: RANDOM_OPPORTUNITY_TITLES.sample,
                                      teaser: Faker::Lorem.paragraph
                                    })
+
+    Developer.all.each do |developer|
+      developer.judge_opportunity(opportunity)
+    end
   end
 end
 

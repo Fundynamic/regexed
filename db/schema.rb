@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525182639) do
+ActiveRecord::Schema.define(version: 20150530191410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20150525182639) do
     t.datetime "updated_at"
     t.integer  "organisation_id"
   end
+
+  create_table "opportunity_scores", force: true do |t|
+    t.integer  "score",          default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "role_id"
+    t.integer  "opportunity_id"
+  end
+
+  add_index "opportunity_scores", ["opportunity_id"], name: "index_opportunity_scores_on_opportunity_id", using: :btree
+  add_index "opportunity_scores", ["role_id"], name: "index_opportunity_scores_on_role_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "type"

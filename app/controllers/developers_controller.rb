@@ -3,7 +3,8 @@ class DevelopersController < ApplicationController
   def index
     if current_user
       @developer = current_user.role_developer
-      @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
+      # @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
+      @opportunity_scores = OpportunityScore.for_role(@developer).ordered_by_highest_score.limit(10)
     else
       render :developers
     end

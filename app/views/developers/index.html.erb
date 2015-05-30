@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h1>Jouw relevante opdrachten</h1>
+    <h1>Jouw top 10 relevante opdrachten</h1>
     <p>
       Op basis van jouw <a href="#">voorkeuren</a> tonen we de meest relevante opdrachten. Indien je interesse hebt, klik dan op de knop "Ik heb interesse!".
       De organisatie zal op de hoogte gebracht worden van jouw interesse en je contact gegevens worden kenbaar gemaakt.
@@ -8,12 +8,15 @@
   </div>
 </div>
 <div class="opportunities">
-<% @opportunities.each do |opportunity| %>
+<% @opportunity_scores.each do |opportunity_score| %>
+  <% opportunity = opportunity_score.opportunity %>
   <div class="row">
     <div class="col-md-10 col-md-offset-1 opportunity">
       <h3>
         <%=opportunity.title%>
-        <%= '&#9733;'.html_safe %> <!-- star !-->
+        <% opportunity_score.stars.times do %>
+          <%= '&#9733;'.html_safe %> <!-- star !-->
+        <% end %>
         <% if opportunity.liked_by(@developer) %><%= '&#128077'.html_safe %> <% end %>
         <span class="pull-right period">
           <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
