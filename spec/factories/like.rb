@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :role do
+  factory :like do
   end
 end
