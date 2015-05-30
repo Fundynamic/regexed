@@ -23,7 +23,8 @@ class Role < ActiveRecord::Base
     opportunity_score = OpportunityScore.find_or_create_by(role: self, opportunity: opportunity)
     opportunity_score.role = self
     opportunity_score.opportunity = opportunity
-    opportunity_score.score = rand(100)
+    opportunity_score.score = 0
+    score_opportunity(opportunity_score)
     opportunity_score.save!
     #
     # calculate score
