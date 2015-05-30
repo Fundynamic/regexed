@@ -17,6 +17,18 @@
 
 DEFAULT_PASSWORD = "welkom123"
 
+RANDOM_OPPORTUNITY_TITLES = [
+  'Uitdagende java klus!',
+  'Ruby rockstar gezocht!',
+  'Frontender met gevoel voor design',
+  'Haastklus, actie site!',
+  'Help de wereld te verbeteren!',
+  'Ambitieus project zoekt ambitieuze professional',
+  'Fotograaf gezocht',
+  'Administratief medewerker gezocht',
+  'Boekhouder gezocht voor inkomstenbelasting',
+]
+
 def create_user(email, password)
   User.create(:email => email, :password => password, :password_confirmation => password)
 end
@@ -65,7 +77,7 @@ def generate_n_opportunities_for(amount, organisation)
     create_opportunity(organisation, {
                                      start_date: start_date,
                                      end_date: end_date,
-                                     title: Faker::Lorem.sentence,
+                                     title: RANDOM_OPPORTUNITY_TITLES.sample,
                                      teaser: Faker::Lorem.paragraph
                                    })
   end
