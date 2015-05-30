@@ -13,7 +13,7 @@ class Skill < ActiveRecord::Base
   end
 
   def self.check_skills_and_save_new_ones(skills_string, unknown_skill_type)
-    skills_string.split(',').map(&:strip).each do |skill_name|
+    self.to_array(skills_string).each do |skill_name|
       skill = Skill.new
       skill.name = skill_name.downcase
       skill.type = unknown_skill_type
@@ -21,6 +21,14 @@ class Skill < ActiveRecord::Base
         skill.save!
       end
     end
+  end
+
+  def self.to_array(skills_string)
+    skills_string.split(',').map(&:strip)
+  end
+
+  def self.to_array_downcase(skills_string)
+    skills_string.split(',').map(&:strip).map(&:downcase)
   end
 
 end

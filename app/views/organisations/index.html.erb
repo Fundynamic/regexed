@@ -14,14 +14,23 @@
         <h3>
           <%=opportunity.title%>
           <span class="pull-right period">
-          <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
-            <% if opportunity.end_date.blank? %>
-            <%= '&#127937;'.html_safe %> ??-??-????
-          <% else %>
-            <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
-          <% end %>
-        </span>
+            <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
+              <% if opportunity.end_date.blank? %>
+              <%= '&#127937;'.html_safe %> ??-??-????
+            <% else %>
+              <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
+            <% end %>
+          </span>
         </h3>
+        <p><strong>Vaardigheden:</strong>
+        <% skills = Skill.to_array(opportunity.skills) %>
+        <% skills.each_with_index do |skill, index| %>
+          <span><em><%=skill%></em></span>
+            <% unless index == skills.size - 1 %>
+              ,
+            <% end %>
+        <% end %>
+        </p>
         <p>
           <%= opportunity.teaser %>
         </p>
@@ -37,3 +46,6 @@
     </div>
   <% end %>
 </div>
+<script>
+  $("[data-role='skills']").tokenfield();
+</script>

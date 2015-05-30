@@ -1,8 +1,8 @@
 class Opportunity < ActiveRecord::Base
 
-  attr_accessible :title, :teaser, :start_date, :end_date
+  attr_accessible :title, :teaser, :start_date, :end_date, :skills
 
-  validates_presence_of :title, :teaser, :start_date
+  validates_presence_of :title, :teaser, :start_date, :skills
   validate :ensure_end_date_is_valid
 
   belongs_to :organisation

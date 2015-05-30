@@ -20,6 +20,11 @@ class Developer < Role
     opportunity_score.score += (50 - days)
 
     # every skill that matches, scores a point
+    skills_role = Skill.to_array_downcase(self.skills)
+    skills_opportunity = Skill.to_array_downcase(opportunity.skills)
+    skills_role.each do |skill|
+      opportunity_score.score += 2 if skills_opportunity.include?(skill)
+    end
   end
 
 end

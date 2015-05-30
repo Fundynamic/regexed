@@ -29,6 +29,13 @@ RANDOM_OPPORTUNITY_TITLES = [
   'Boekhouder gezocht voor inkomstenbelasting',
 ]
 
+RANDOM_SKILLS = [
+  "Java, Ruby, Javascript",
+  "HTML, Ember, Angular",
+  "CSS, Bootstrap, jQuery",
+  "JAX-SW, JAX-RS, Hibernate",
+]
+
 def create_user(email, password)
   User.create(:email => email, :password => password, :password_confirmation => password)
 end
@@ -61,7 +68,7 @@ def create_opportunity(organisation, args = {})
   puts "Creating opportunity for #{organisation.name} with #{args}"
   opportunity = organisation.opportunities.build(args)
   unless opportunity.save
-    puts "Error creating opportunity, errors: #{opportunity.errors.messages}"
+    raise "Error creating opportunity, errors: #{opportunity.errors.messages}"
   end
   opportunity
 end
@@ -78,6 +85,7 @@ def generate_n_opportunities_for(amount, organisation)
                                      start_date: start_date,
                                      end_date: end_date,
                                      title: RANDOM_OPPORTUNITY_TITLES.sample,
+                                     skills: RANDOM_SKILLS.sample,
                                      teaser: Faker::Lorem.paragraph
                                    })
 

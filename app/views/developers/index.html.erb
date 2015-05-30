@@ -27,6 +27,15 @@
           <% end %>
         </span>
       </h3>
+      <p><strong>Vaardigheden:</strong>
+        <% skills = Skill.to_array(opportunity.skills) %>
+        <% skills.each_with_index do |skill, index| %>
+          <span><em><%=skill%></em></span>
+          <% unless index == skills.size - 1 %>
+            ,
+          <% end %>
+        <% end %>
+      </p>
       <p>
         <%= opportunity.teaser %>
       </p>
