@@ -1,20 +1,39 @@
-<div class="col-md-8 col-md-offset-2">
-  <h1>Opdrachten</h1>
-  <% if @organisation.opportunities.any? %>
-    <% @organisation.opportunities.each do |opportunity| %>
-      <p>
-        <%= opportunity.title %> (<strong><%= opportunity.likes.count %> hebben
-        interesse</strong>)
-        <% opportunity.likes.each do |like| %>
-        <p>
-          <%= like.role.name %> - beschikbaar per <%= like.role.available %>
-        </p>
-      <% end %>
-      </p>
-    <% end %>
-  <% else %>
+<% @opportunities = @organisation.opportunities %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h1>Jouw uitgeschreven opdrachten</h1>
     <p>
-      <%= link_to "Voeg opdracht toe", new_opportunity_path, class: "btn btn-primary" %>
+      Dit zijn jouw uitgeschreven opdrachten.
     </p>
+  </div>
+</div>
+<div class="opportunities">
+  <% @opportunities.each do |opportunity| %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 opportunity">
+        <h3>
+          <%=opportunity.title%>
+          <span class="pull-right period">
+          <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
+            <% if opportunity.end_date.blank? %>
+            <%= '&#127937;'.html_safe %> ??-??-????
+          <% else %>
+            <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
+          <% end %>
+        </span>
+        </h3>
+        <p>
+          <%= opportunity.teaser %>
+        </p>
+        <% if opportunity.likes.count > 0 %>
+        <strong>
+          <%=opportunity.likes.count%> professional(s) hebben interesse getoond
+        </strong>
+          <% opportunity.likes.each do |like| %>
+            <p><%= like.role.name %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
