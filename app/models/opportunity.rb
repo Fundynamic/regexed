@@ -12,6 +12,13 @@ class Opportunity < ActiveRecord::Base
   before_save do
     self.skills = self.skills.split(',').map(&:strip).map(&:downcase).join(",")
   end
+
+  after_save do
+    Developer.all.each do |role|
+      role.judge_opportunity(self)
+    end
+  end
+
   # meaning
   # IF it is set, it should be AFTER start_date
   def ensure_end_date_is_valid
