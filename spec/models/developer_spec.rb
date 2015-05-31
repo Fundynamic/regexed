@@ -23,4 +23,30 @@ describe Developer do
     end
   end
 
+  context ".score_opportunity" do
+    let(:developer) { build(:developer, skills: skills, available: Date.today) }
+    let(:opportunity) { build(:opportunity, start_date: start_date, end_date: end_date) }
+    let(:opportunity_score) { build(:opportunity_score, opportunity: opportunity, role: developer) }
+
+    subject { developer.score_opportunity(opportunity_score).score }
+
+    context "given a developer with no skills" do
+      let(:skills) { "" }
+
+      context "given an opportunity that starts today" do
+        let(:start_date) { Date.today }
+        let(:end_date) { nil }
+
+        it { should eq (50) }
+      end
+
+      context "given an opportunity that starts 10 days after available date" do
+        let(:start_date) { 10.days.from_now }
+        let(:end_date) { nil }
+
+        it { should eq (40) }
+      end
+    end
+  end
+
 end

@@ -21,10 +21,14 @@ class Developer < Role
 
     # every skill that matches, scores a point
     skills_role = Skill.to_array_downcase(self.skills)
-    skills_opportunity = Skill.to_array_downcase(opportunity.skills)
-    skills_role.each do |skill|
-      opportunity_score.score += 2 if skills_opportunity.include?(skill)
+    if skills_role.size > 0
+      skills_opportunity = Skill.to_array_downcase(opportunity.skills)
+      points_per_skill = 50 / skills_opportunity.size
+      skills_role.each do |skill|
+        opportunity_score.score += points_per_skill if skills_opportunity.include?(skill)
+      end
     end
+    opportunity_score
   end
 
 end
