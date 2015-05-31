@@ -8,7 +8,7 @@ describe Opportunity do
   it { should belong_to(:organisation) }
 
   context "opportunity with only start date" do
-    let(:opportunity) { Opportunity.new({title: "foo", teaser: "some teaser", start_date: Date.today, end_date: end_date}) }
+    let(:opportunity) { Opportunity.new({title: "foo", teaser: "some teaser", start_date: Date.today, end_date: end_date, skills: "Java" }) }
     subject { opportunity }
 
     context "without end_date" do
