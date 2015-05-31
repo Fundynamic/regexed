@@ -11,7 +11,7 @@ class OpportunitiesController < ApplicationController
   def create
     @opportunity = organisation.opportunities.build(params[:opportunity])
     if @opportunity.save
-      Skill.check_dev_skills_and_save_new_ones(@opportunities.skills)
+      Skill.check_dev_skills_and_save_new_ones(@opportunity.skills)
       flash[:notice] = t(".success")
       redirect_to :root
     else
