@@ -10,7 +10,7 @@ class Opportunity < ActiveRecord::Base
   has_many :likes
 
   before_save do
-    self.skills = self.skills.split(',').map(&:strip).map(&:downcase).join(",")
+    self.skills = Skill.to_array_downcase(self.skills).join(",")
   end
 
   after_save do

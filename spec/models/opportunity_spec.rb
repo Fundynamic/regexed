@@ -32,6 +32,17 @@ describe Opportunity do
     end
   end
 
+  context "it saves skills as downcased, stripped vars" do
+    let(:opportunity) { build(:opportunity, skills: "Ruby, Java, Javascript") }
+    before do
+      opportunity.save
+    end
+    subject { opportunity.skills }
+
+    it { should eq "ruby,java,javascript" }
+  end
+
+
   context ".liked_by" do
     let(:opportunity) { create(:opportunity) }
     subject { opportunity.liked_by(role) }

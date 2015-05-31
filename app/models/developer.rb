@@ -4,7 +4,7 @@ class Developer < Role
   attr_accessible :first_name, :last_name, :skills, :available, :pitch, :area
 
   before_save do
-    self.skills = self.skills.split(',').map(&:strip).map(&:downcase).join(",")
+    self.skills = Skill.to_array_downcase(self.skills).join(",")
   end
 
   def name

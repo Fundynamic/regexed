@@ -23,6 +23,16 @@ describe Developer do
     end
   end
 
+  context "it saves skills as downcased, stripped vars" do
+    let(:developer) { build(:developer, skills: "Java, Ruby, Javascript") }
+    before do
+      developer.save
+    end
+    subject { developer.skills }
+
+    it { should eq "java,ruby,javascript" }
+  end
+
   context ".score_opportunity" do
     let(:developer) { build(:developer, skills: skills, available: Date.today) }
     let(:opportunity) { build(:opportunity, start_date: start_date, end_date: end_date) }
