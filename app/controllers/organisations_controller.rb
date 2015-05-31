@@ -21,7 +21,7 @@ class OrganisationsController < ApplicationController
     current_user.roles << @organisation
     if @organisation.save
       flash[:notice] = t(".success")
-      Skill.check_org_skills_and_save_new_ones(@developer.skills)
+      Skill.check_org_skills_and_save_new_ones(@organisation.skills)
       redirect_to action: "index"
     else
       render :new
