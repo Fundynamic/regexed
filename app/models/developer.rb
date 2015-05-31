@@ -12,11 +12,20 @@ class Developer < Role
   end
 
   def score_opportunity(opportunity_score)
+    # TODO: base scoring on preferences
+
     # the closer to the availability date the more points (50% for now)
     opportunity = opportunity_score.opportunity
     role = opportunity_score.role
     days = (opportunity.start_date.to_datetime - role.available.to_datetime).to_i
     days = 50 if days > 50
+    if days < 0
+      if days < -14
+        days = 0
+      else
+        days = days.abs
+      end
+    end
     opportunity_score.score += (50 - days)
 
     # every skill that matches, scores a point
