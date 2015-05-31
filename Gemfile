@@ -58,6 +58,7 @@ group :test do
 
   gem 'capybara', require: false
   gem 'capybara-webkit', require: false
+  gem 'launchy' # for show_screenshot
 
   gem "webmock", "~> 1.11.0"
   gem "timecop", "~> 0.6.1"
