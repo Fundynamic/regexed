@@ -4,6 +4,12 @@ class Role < ActiveRecord::Base
   has_many :likes
   has_many :opportunity_score_for_roles
 
+  after_save do
+    Opportunity.starting_since(available).each do |opportunity|
+      self.judge_opportunity(opportunity)
+    end
+  end
+
   def can_like?
     likes_budget > 0
   end
