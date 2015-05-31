@@ -19,16 +19,14 @@ class Role < ActiveRecord::Base
   end
 
   def judge_opportunity(opportunity)
-    # role has 'preferences'
     opportunity_score = OpportunityScore.find_or_create_by(role: self, opportunity: opportunity)
+    old_score = opportunity_score.score
     opportunity_score.role = self
     opportunity_score.opportunity = opportunity
     opportunity_score.score = 0
     score_opportunity(opportunity_score)
+    puts "#{self.name} judged opportunity #{opportunity.title} with score #{opportunity_score.score} - (was #{old_score})"
     opportunity_score.save!
-    #
-    # calculate score
-    # find_or_create_by opportunity, role and set score
   end
 
 end
