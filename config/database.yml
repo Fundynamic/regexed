@@ -23,7 +23,7 @@ production:
   host: localhost
   adapter: postgresql
   username: postgres
-  password: postgres
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   database: regexer_production
   pool: 5
   timeout: 5000
