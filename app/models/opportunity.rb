@@ -9,6 +9,9 @@ class Opportunity < ActiveRecord::Base
 
   has_many :likes
 
+  before_save do
+    self.skills = self.skills.split(',').map(&:strip).map(&:downcase).join(",")
+  end
   # meaning
   # IF it is set, it should be AFTER start_date
   def ensure_end_date_is_valid
