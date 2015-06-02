@@ -5,9 +5,7 @@ class Role < ActiveRecord::Base
   has_many :opportunity_score_for_roles
 
   after_save do
-    Opportunity.starting_since(available).each do |opportunity|
-      self.judge_opportunity(opportunity)
-    end
+    Role.judge_all_opportunities(self)
   end
 
   def can_like?
@@ -33,6 +31,12 @@ class Role < ActiveRecord::Base
     score_opportunity(opportunity_score)
     puts "#{self.name} judged opportunity #{opportunity.title} with score #{opportunity_score.score} - (was #{old_score})"
     opportunity_score.save!
+  end
+
+  def self.judge_all_opportunities(role)
+    Opportunity.starting_since(role.available).each do |opportunity|
+      role.judge_opportunity(opportunity)
+    end
   end
 
 end
