@@ -1,7 +1,7 @@
 class OrganisationsController < ApplicationController
 
   def index
-    if current_user
+    if current_user && current_user.role_organisation.present?
       @organisation = current_user.role_organisation
     else
       render :organisaties
