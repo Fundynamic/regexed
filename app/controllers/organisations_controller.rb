@@ -13,7 +13,7 @@ class OrganisationsController < ApplicationController
   end
 
   def edit
-    @organisation = Organisation.find(params[:id])
+    @organisation = current_user.role_organisation
   end
 
   def create

@@ -15,18 +15,18 @@ class DevelopersController < ApplicationController
   end
 
   def edit
-    @developer = Developer.find(params[:id])
+    @developer = current_user.role_developer
   end
 
   def increase_likes
-    @developer = Developer.find(params[:id])
+    @developer = current_user.role_developer
     @developer.likes_budget += 10
     @developer.save!
     redirect_to :root
   end
 
   def update
-    @developer = Developer.find(params[:id])
+    @developer = current_user.role_developer
     if @developer.update_attributes(params[:developer])
       Skill.check_dev_skills_and_save_new_ones(@developer.skills)
       flash[:notice] = t(".success")

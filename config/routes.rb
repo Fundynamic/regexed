@@ -20,12 +20,11 @@ Regexed::Application.routes.draw do
       post 'like', on: :member
     end
 
-    resources :developers, :shallow => true do
+    resource :developer, :shallow => true do
       post 'increase_likes', on: :member
     end
 
-    resources :organisations
-    # todo company/organisation
+    resource :organisation
   end
 
 
