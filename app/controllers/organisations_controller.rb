@@ -27,4 +27,15 @@ class OrganisationsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    @organisation = current_user.role_organisation
+    if @organisation.update_attributes(params[:organisation])
+      flash[:notice] = t(".success")
+      redirect_to :root
+    else
+      render :edit
+    end
+  end
+
 end
