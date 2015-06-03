@@ -1,10 +1,13 @@
 class OpportunitiesController < ApplicationController
 
+  before_filter do
+    redirect_to :root unless current_user.organisation?
+  end
+
   def index
   end
 
   def new
-    redirect_to :root if current_user.developer?
     @opportunity = Opportunity.new
   end
 
