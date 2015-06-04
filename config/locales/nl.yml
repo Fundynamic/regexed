@@ -48,10 +48,12 @@ nl:
   developers:
     create:
       success: Je bent succesvol aangemeld als Developer
+    update:
       success: Developer profiel bijgewerkt
   organisations:
     create:
       success: Je bent succesvol aangemeld als Organisatie
+    update:
       success: Organisatie profiel bijgewerkt
 
   time:
