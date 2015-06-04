@@ -9,6 +9,7 @@ Regexed::Application.routes.draw do
   get 'info/developers' => 'info#developers'
   get 'info/organisations' => 'info#organisations'
   get 'manifesto' => 'info#manifesto'
+  get 'algemene-voorwaarden' => 'info#algemenevoorwaarden'
   get 'contact' => 'info#contact'
 
   authenticate :user do

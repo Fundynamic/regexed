@@ -11,4 +11,7 @@ class InfoController < ApplicationController
   def manifesto
   end
 
+  def algemenevoorwaarden
+  end
+
 end
