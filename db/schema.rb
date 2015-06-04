@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530210552) do
+ActiveRecord::Schema.define(version: 20150604070233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20150530210552) do
     t.string   "name"
     t.string   "skills"
     t.string   "pitch"
-    t.string   "area"
     t.decimal  "lat",          precision: 8, scale: 2, default: 0.0
     t.decimal  "lon",          precision: 8, scale: 2, default: 0.0
     t.integer  "likes_budget",                         default: 0

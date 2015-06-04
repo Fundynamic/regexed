@@ -5,6 +5,5 @@ FactoryGirl.define do
     skills "java, ruby, javascript"
     available Date.today
     pitch Faker::Company.catch_phrase
-    area Faker::Address.city
   end
 end
