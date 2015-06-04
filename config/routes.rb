@@ -11,6 +11,8 @@ Regexed::Application.routes.draw do
   get 'manifesto' => 'info#manifesto'
   get 'algemene-voorwaarden' => 'info#algemenevoorwaarden'
   get 'contact' => 'info#contact'
+  get 'stats' => 'info#stats'
+  get 'prijzen' => 'info#prijzen'
 
   authenticate :user do
     get 'aanmelden' => 'wizard#index'
