@@ -9,7 +9,8 @@ class Role < ActiveRecord::Base
   end
 
   def can_like?
-    likes_budget > 0
+    # likes_budget > 0
+    true
   end
 
   def like!(opportunity)
