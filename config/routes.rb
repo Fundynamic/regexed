@@ -6,6 +6,9 @@ Regexed::Application.routes.draw do
 
   root to: 'welcome#index'
 
+  get 'info/developers' => 'info#developers'
+  get 'info/organisations' => 'info#organisations'
+
   authenticate :user do
     get 'aanmelden' => 'wizard#index'
 
