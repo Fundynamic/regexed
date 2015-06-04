@@ -30,7 +30,6 @@ class OpportunitiesController < ApplicationController
            else
              raise "Cannot like opportunity - invalid role"
            end
-
     raise "Not allowed to like" unless role.can_like?
 
     role.like!(@opportunity)
