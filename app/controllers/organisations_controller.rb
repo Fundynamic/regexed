@@ -9,7 +9,7 @@ class OrganisationsController < ApplicationController
       @organisation = current_user.role_organisation
       render :index
     else
-      render :organisaties
+      redirect_to aanmelden_path
     end
   end
 

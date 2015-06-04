@@ -11,7 +11,7 @@ class DevelopersController < ApplicationController
       @opportunity_scores = OpportunityScore.for_role(@developer).ordered_by_highest_score.limit(10)
       render :index
     else
-      render :developers
+      redirect_to aanmelden_path
     end
   end
 
