@@ -14,7 +14,11 @@
         <% opportunity_score.stars.times do %>
           <%= '&#9733;'.html_safe %> <!-- star !-->
         <% end %>
-        <% if opportunity.liked_by(@developer) %><%= '&#128077'.html_safe %> <% end %>
+        <% if opportunity.liked_by(@developer) %>
+          <%= '&#128077'.html_safe %>
+          op
+          <%= l(opportunity_score.created_at, format: :long_with_time) %>
+        <% end %>
         <span class="pull-right period">
           <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
           <% if opportunity.end_date.blank? %>

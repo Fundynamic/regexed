@@ -30,6 +30,13 @@ class DevelopersController < ApplicationController
     redirect_to :root
   end
 
+  def opportunities_with_interest
+    @developer = current_user.role_developer
+    @opportunity_scores = @developer.likes.map do |like|
+      OpportunityScore.for_role(@developer).for_opportunity(like.opportunity).first
+    end.sort! {|a,b| b.created_at <=> a.created_at}
+  end
+
   def update
     @developer = current_user.role_developer
     if @developer.update_attributes(params[:developer])

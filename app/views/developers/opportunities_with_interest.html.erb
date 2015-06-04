@@ -1,0 +1,69 @@
+<% if @opportunity_scores.count > 0 %>
+  <div class="row">
+    <div class="jumbotron text-center">
+      <h1>Je hebt interesse getoond in deze opdrachten</h1><br/>
+      <h2>meest recente bovenaan</h2>
+    </div>
+  </div>
+  <% @opportunity_scores.each do |opportunity_score| %>
+    <% opportunity = opportunity_score.opportunity %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 opportunity">
+        <h3>
+          <%=opportunity.title%>
+          <% opportunity_score.stars.times do %>
+            <%= '&#9733;'.html_safe %> <!-- star !-->
+          <% end %>
+          <% if opportunity.liked_by(@developer) %>
+            <%= '&#128077'.html_safe %>
+            op
+            <%= l(opportunity_score.created_at, format: :long_with_time) %>
+          <% end %>
+          <span class="pull-right period">
+          <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
+            <% if opportunity.end_date.blank? %>
+            <%= '&#127937;'.html_safe %> ??-??-????
+          <% else %>
+            <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
+          <% end %>
+        </span>
+        </h3>
+        <p><strong>Vaardigheden:</strong>
+          <% skills = Skill.to_array(opportunity.skills) %>
+          <% skills.each_with_index do |skill, index| %>
+            <span><em><%=skill%></em></span>
+            <% unless index == skills.size - 1 %>
+              ,
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <%= opportunity.teaser %>
+        </p>
+        <div class="text-center">
+          <% if @developer.can_like? %>
+            <% unless opportunity.liked_by(@developer) %>
+              <%= link_to("&#128077; Ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
+            <% end %>
+          <% else %>
+            <span class="button btn-default disabled">Like!</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="jumbotron text-center">
+      <% if @opportunity_scores.count == 0 %>
+        <h1>Hier is niets te doen...</h1><br/>
+        <h2>Toon interesse in een opdracht en bekijk hier hoe het ermee staat</h2>
+        <h2><%= link_to "Bekijk de opdrachten die we voor jou hebben gevonden", developer_path, class: "btn btn-primary btn-lg" %></h2>
+      <% else %>
+        <h1>Geduld is een schone zaak</h1><br/>
+        <h2>Er is nog geen interesse getoond in een van jouw opdrachten</h2>
+        <h2><%= link_to "plaats een opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %></h2>
+      <% end %>
+    </div>
+  </div>
+<% end %>

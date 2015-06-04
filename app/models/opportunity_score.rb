@@ -8,6 +8,10 @@ class OpportunityScore < ActiveRecord::Base
     where(role_id: role.id)
   end
 
+  def self.for_opportunity(opportunity)
+    where(opportunity_id: opportunity.id)
+  end
+
   def self.ordered_by_highest_score
     order(score: :desc)
   end
