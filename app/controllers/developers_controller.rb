@@ -35,7 +35,7 @@ class DevelopersController < ApplicationController
     if @developer.update_attributes(params[:developer])
       Skill.check_dev_skills_and_save_new_ones(@developer.skills)
       flash[:notice] = t(".success")
-      redirect_to :root
+      redirect_to action: "show"
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class DevelopersController < ApplicationController
     if @developer.save
       Skill.check_dev_skills_and_save_new_ones(@developer.skills)
       flash[:notice] = t(".success")
-      render :show
+      redirect_to action: "show"
     else
       render :new
     end

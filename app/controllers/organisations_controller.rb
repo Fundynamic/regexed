@@ -37,7 +37,7 @@ class OrganisationsController < ApplicationController
     @organisation = current_user.role_organisation
     if @organisation.update_attributes(params[:organisation])
       flash[:notice] = t(".success")
-      redirect_to :root
+      redirect_to action: "show"
     else
       render :edit
     end
