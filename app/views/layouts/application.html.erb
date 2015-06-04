@@ -72,6 +72,9 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? && current_user.needs_role? == false %>
+          <%= render("#{current_user.role_name}s/navbar_right") %>
+        <% end %>
         <li>
           <% if user_signed_in? %>
             <%= link_to('&#128275; Uitloggen'.html_safe, destroy_user_session_path, :method => :delete, class: "btn") %>
