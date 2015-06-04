@@ -1,8 +1,7 @@
 class OpportunitiesController < ApplicationController
 
-  before_filter do
-    redirect_to :root unless current_user.organisation?
-  end
+  before_filter :check_if_organisation!, except: [:like]
+  before_filter :check_if_developer!, only: [:like]
 
   def index
   end

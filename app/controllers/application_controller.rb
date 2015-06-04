@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
+  def check_if_organisation!
+    redirect_to :root unless current_user.organisation?
+  end
+
+  def check_if_developer!
+    redirect_to :root unless current_user.developer?
+  end
+
 end

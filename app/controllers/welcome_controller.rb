@@ -5,9 +5,9 @@ class WelcomeController < ApplicationController
       if current_user.needs_role?
         redirect_to controller: :wizard, action: :index
       elsif current_user.developer?
-        redirect_to controller: :developers, action: :index
+        redirect_to developer_path
       elsif current_user.organisation?
-        redirect_to controller: :organisations, action: :index
+        redirect_to organisation_path
       end
     end
   end

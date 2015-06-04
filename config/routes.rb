@@ -6,13 +6,8 @@ Regexed::Application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :developers, only: [:index]
-  resources :organisations, only:[:index]
-
   authenticate :user do
     get 'aanmelden' => 'wizard#index'
-    get 'aanmelden/organisatie' => 'organisations#new' #alias
-    get 'aanmelden/developer' => 'developers#new' # alias
 
     resources :skills, only: [:index]
 
@@ -24,7 +19,7 @@ Regexed::Application.routes.draw do
       post 'increase_likes', on: :member
     end
 
-    resource :organisation
+    resource :organisation, :shallow => true
   end
 
 

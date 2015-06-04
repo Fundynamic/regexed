@@ -64,10 +64,10 @@
           <%= render("#{current_user.role_name}s/navbar") %>
         <% else %>
           <li>
-            <%= link_to "Professionals", developers_path, class: "btn btn-link" %>
+            <%= link_to "Professionals", developer_path, class: "btn btn-link" %>
           </li>
           <li>
-            <%= link_to "Organisaties", organisations_path, class: "btn btn-link" %>
+            <%= link_to "Organisaties", organisation_path, class: "btn btn-link" %>
           </li>
         <% end %>
       </ul>

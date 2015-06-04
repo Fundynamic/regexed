@@ -1,11 +1,13 @@
-<div class="jumbotron">
-  <h1>Hoe kunnen wij je helpen?</h1>
+<div class="row">
+  <div class="jumbotron">
+    <h1>Hoe kunnen wij je helpen?</h1>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-6">
-    <%= link_to "Ik zoek werk", aanmelden_developer_path, class: "btn btn-primary btn-lg btn-block" %>
+    <%= link_to "Ik zoek werk", new_developer_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>
   <div class="col-md-6">
-    <%= link_to "Ik zoek professionals", aanmelden_organisatie_path, class: "btn btn-primary btn-lg btn-block" %>
+    <%= link_to "Ik zoek professionals", new_organisation_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>
 </div>

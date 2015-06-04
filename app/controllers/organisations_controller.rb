@@ -1,8 +1,13 @@
 class OrganisationsController < ApplicationController
 
   def index
+    raise "this will not be called anymore"
+  end
+
+  def show
     if current_user && current_user.role_organisation.present?
       @organisation = current_user.role_organisation
+      render :index
     else
       render :organisaties
     end
@@ -22,7 +27,7 @@ class OrganisationsController < ApplicationController
     if @organisation.save
       flash[:notice] = t(".success")
       Skill.check_org_skills_and_save_new_ones(@organisation.skills)
-      redirect_to action: "index"
+      redirect_to action: "show"
     else
       render :new
     end
