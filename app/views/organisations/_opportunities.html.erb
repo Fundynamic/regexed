@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1 opportunity">
         <h3>
-          <%=opportunity.title%>
+          <%=opportunity.title%>&nbsp;<%= link_to "Wijzigen", edit_opportunity_url(opportunity.id), class: "btn btn-info" %>
           <span class="pull-right period">
             <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
             <% if opportunity.end_date.blank? %>

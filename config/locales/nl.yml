@@ -47,11 +47,12 @@ nl:
 
   developers:
     create:
-      succes: Je bent succesvol aangemeld als Developer
+      success: Je bent succesvol aangemeld als Developer
+      success: Developer profiel bijgewerkt
   organisations:
     create:
-      succes: Je bent succesvol aangemeld als Organisatie
-
+      success: Je bent succesvol aangemeld als Organisatie
+      success: Organisatie profiel bijgewerkt
 
   time:
     formats:

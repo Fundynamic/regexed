@@ -1,7 +1,23 @@
-<div class="row">
-  <div class="jumbotron text-center">
-    <h1>Interesses</h1><br/>
-    <h2>Op deze opdrachten hebben developers interesse getoond.</h2>
+<% if @opportunities.count > 0 %>
+  <div class="row">
+    <div class="jumbotron text-center">
+      <h1>Interesse!</h1><br/>
+      <h2>Neem contact op. Goed gevoel? Gaan!</h2>
+    </div>
   </div>
-</div>
-<%= render partial: 'opportunities', locals: { :opportunities => @opportunities } %>
+  <%= render partial: 'opportunities', locals: { :opportunities => @opportunities } %>
+<% else %>
+  <div class="row">
+    <div class="jumbotron text-center">
+      <% if current_user.role_organisation.opportunities.count == 0 %>
+        <h1>Hier is niets te doen...</h1><br/>
+        <h2>Je hebt nog geen opdrachten aangemaakt</h2>
+        <h2><%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %></h2>
+      <% else %>
+        <h1>Geduld is een schone zaak</h1><br/>
+        <h2>Er is nog geen interesse getoond in een van jouw opdrachten</h2>
+        <h2><%= link_to "plaats een opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %></h2>
+      <% end %>
+    </div>
+  </div>
+<% end %>

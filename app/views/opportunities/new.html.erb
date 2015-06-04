@@ -1,51 +1,8 @@
-<div class="col-md-4 col-md-offset-4">
-  <h2>Een nieuwe opdracht. Een nieuwe kans tot samenwerking</h2>
-  <p>
-    Je wil iets gedaan krijgen en zoekt goede mensen die je kunnen helpen. Voer hier een opdracht op. Ons matchings algoritme zal automatisch aan
-    all relevante kandidaten deze opdracht laten zien.
-  </p>
-  <%= form_for @opportunity do |f| %>
-    <%= f.error_messages %>
-
-    <div class="form-group">
-      <%= f.label :title %><br />
-      <%= f.text_field :title, autofocus: true, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :teaser %><br />
-      <%= f.text_area :teaser, cols: 75, rows: 4, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :skills %><br />
-      <%= f.text_field :skills, class: "form-control", data: { role: "skills" } %>
-    </div>
-    <div class="form-group">
-      <%= f.label :start_date %><br />
-      <%= f.date_field :start_date, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :end_date %><br />
-      <%= f.date_field :end_date, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Opslaan", class: "btn btn-primary form-control" %>
-    </div>
-  <% end %>
-
+<div class="row">
+  <div class="jumbotron text-center">
+    <h1>Een nieuwe opdracht</h1>
+    <h2>Een nieuwe kans voor samenwerking</h2>
+  </div>
 </div>
 
-<script>
-  $(function() {
-    $.get("/skills", function( data ) {
-      var skills = _.map(data, function(el) {
-        return el.name;
-      });
-      $("[data-role='skills").tokenfield({
-        autocomplete: {
-          source: skills,
-          delay: 100
-        }
-      });
-    });
-  });
-</script>
+<%= render('form') %>

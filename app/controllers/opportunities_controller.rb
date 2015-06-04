@@ -10,6 +10,28 @@ class OpportunitiesController < ApplicationController
     @opportunity = Opportunity.new
   end
 
+  def edit
+    find_opportunity_for_organisation
+  end
+
+  def update
+    find_opportunity_for_organisation
+
+    if @opportunity.update_attributes(params[:opportunity])
+      Skill.check_dev_skills_and_save_new_ones(@opportunity.skills)
+      flash[:notice] = t(".success")
+      redirect_to :root
+    else
+      render :edit
+    end
+  end
+
+  def find_opportunity_for_organisation
+    @opportunity = Opportunity.find(params[:id])
+    puts "[DENIED] Organisation #{current_user.role_organisation.name} [id #{current_user.role_organisation.id}] tried to access opportunity [#{params[:id]}] that is not theirs."
+    redirect_to :root if @opportunity.organisation.id != current_user.role_organisation.id
+  end
+
   def create
     @opportunity = organisation.opportunities.build(params[:opportunity])
     if @opportunity.save

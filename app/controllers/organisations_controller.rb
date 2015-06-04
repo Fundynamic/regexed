@@ -8,6 +8,7 @@ class OrganisationsController < ApplicationController
     if current_user && current_user.role_organisation.present?
       @organisation = current_user.role_organisation
       @opportunities = @organisation.opportunities
+      @opportunities_with_likes = find_org_opportunities_with_likes
       render :index
     else
       redirect_to aanmelden_path
@@ -24,9 +25,7 @@ class OrganisationsController < ApplicationController
 
   def opportunities_with_interest
     @organisation = current_user.role_organisation
-    @opportunities = @organisation.opportunities.select do |opportunity|
-      opportunity.likes.count > 0
-    end
+    @opportunities = find_org_opportunities_with_likes
   end
 
   def create
@@ -47,6 +46,13 @@ class OrganisationsController < ApplicationController
       redirect_to action: "show"
     else
       render :edit
+    end
+  end
+
+protected
+  def find_org_opportunities_with_likes
+    @organisation.opportunities.select do |opportunity|
+      opportunity.likes.count > 0
     end
   end
 

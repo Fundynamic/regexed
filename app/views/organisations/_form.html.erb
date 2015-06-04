@@ -1,20 +1,23 @@
-<%= form_for @organisation, url: organisation_path do |f| %>
-  <%= f.error_messages %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for @organisation, url: organisation_path do |f| %>
+      <%= f.error_messages %>
 
-  <div class="form-group">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :pitch %><br />
-    <%= f.text_area :pitch, cols: 75, rows: 4, class: "form-control" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pitch %><br />
+        <%= f.text_area :pitch, cols: 75, rows: 4, class: "form-control" %>
+      </div>
 
-  <div class="form-group">
-    <%= f.submit "Opslaan", class: "btn btn-primary form-control" %>
+      <div class="form-group">
+        <%= f.submit "Opslaan", class: "btn btn-primary form-control" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
+</div>
 <script>
   $(function() {
     $.get("/skills", function( data ) {

@@ -1,7 +1,60 @@
 <div class="row">
   <div class="jumbotron text-center">
     <h1>Jouw opdrachten</h1><br/>
-    <%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %>
+    <% if @opportunities_with_likes.count == 0 %>
+      <%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %>
+    <% else %>
+      <%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to('Bekijk interesse', opportunities_with_interest_organisation_path, class: 'btn btn-warning btn-lg') %>
+    <% end %>
+    <br/>
   </div>
 </div>
-<%= render partial: 'opportunities', locals: { :opportunities => @opportunities } %>
+<div class="row text-center opportunities-summary">
+  <% if @opportunities_with_likes.count == 0 %>
+    <%= @opportunities.count %> opdracht(en) geplaatst
+  <% else %>
+    <%= @opportunities.count %> opdracht(en) geplaatst waarvan <%= @opportunities_with_likes.count %> intresse heeft ontvangen
+  <% end %>
+  <br/>
+</div>
+<div class="row">
+  <div class="opportunities">
+    <% @opportunities.each do |opportunity| %>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 opportunity">
+          <h3>
+            <%=opportunity.title%>&nbsp;<%= link_to "Wijzigen", edit_opportunity_url(opportunity.id), class: "btn btn-info" %>
+            <span class="pull-right period">
+              <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
+              <% if opportunity.end_date.blank? %>
+                <%= '&#127937;'.html_safe %> ??-??-????
+              <% else %>
+                <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
+              <% end %>
+            </span>
+          </h3>
+          <p>
+            <strong>Vaardigheden:</strong>
+            <% skills = Skill.to_array(opportunity.skills) %>
+            <% skills.each_with_index do |skill, index| %>
+              <span><em><%=skill%></em></span>
+              <% unless index == skills.size - 1 %>
+                ,
+              <% end %>
+            <% end %>
+          </p>
+          <% if opportunity.likes.count > 0 %>
+            <strong>
+              <%=opportunity.likes.count%> developer(s) hebben interesse getoond
+            </strong>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script>
+  $("[data-role='skills']").tokenfield();
+</script>
+
