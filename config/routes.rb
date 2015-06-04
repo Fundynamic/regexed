@@ -25,7 +25,9 @@ Regexed::Application.routes.draw do
       post 'increase_likes', on: :member
     end
 
-    resource :organisation, :shallow => true
+    resource :organisation, :shallow => true do
+      get 'opportunities_with_interest', on: :member
+    end
   end
 
 

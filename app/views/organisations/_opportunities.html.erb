@@ -1,0 +1,44 @@
+<div class="opportunities">
+  <% opportunities.each do |opportunity| %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 opportunity">
+        <h3>
+          <%=opportunity.title%>
+          <span class="pull-right period">
+            <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
+            <% if opportunity.end_date.blank? %>
+              <%= '&#127937;'.html_safe %> ??-??-????
+            <% else %>
+              <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
+            <% end %>
+          </span>
+        </h3>
+        <p><strong>Vaardigheden:</strong>
+          <% skills = Skill.to_array(opportunity.skills) %>
+          <% skills.each_with_index do |skill, index| %>
+            <span><em><%=skill%></em></span>
+            <% unless index == skills.size - 1 %>
+              ,
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <%= opportunity.teaser %>
+        </p>
+        <% if opportunity.likes.count > 0 %>
+          <h3>
+            <%=opportunity.likes.count%> developer(s) hebben interesse getoond
+          </h3>
+          <h4 style="width: 50%">Naam en vaardigheden<span class="pull-right"> Contact informatie </span></h4>
+          <% opportunity.likes.each do |like| %>
+            <p style="width: 50%"><%= like.role.name %> <span class="pull-right"> <%= like.role.contact_info %></span></p>
+            <p style="width: 50%"><%= like.role.skills %> </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+  $("[data-role='skills']").tokenfield();
+</script>

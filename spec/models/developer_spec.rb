@@ -6,6 +6,7 @@ describe Developer do
   it { should validate_presence_of(:skills) }
   it { should validate_presence_of(:pitch) }
   it { should validate_presence_of(:available) }
+  it { should validate_presence_of(:contact_info) }
 
   context "it saves skills as downcased, stripped vars" do
     let(:developer) { build(:developer, skills: "Java, Ruby, Javascript") }
