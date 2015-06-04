@@ -15,7 +15,7 @@ class Role < ActiveRecord::Base
 
   def like!(opportunity)
     raise "cannot like empty opportunity" if opportunity.blank?
-    return false if self.likes_budget <= 0
+    return false unless self.can_like?
     like = opportunity.likes.build
     like.role_id = self.id
     like.save!
