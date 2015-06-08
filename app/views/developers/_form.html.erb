@@ -11,6 +11,7 @@
   </div>
   <div class="form-group">
     <%= f.label :skills %><br />
+    <p>Begin met typen. Indien we de vaardigheid herkennen kun je deze selecteren uit de lijst suggesties. Zo niet dan druk je 'enter' om de nieuwe vaardigheid toe te voegen.</p>
     <%= f.text_field :skills, class: "form-control", data: { role: "skills" } %>
   </div>
   <div class="form-group">
@@ -22,9 +23,9 @@
     <%= f.date_field :available, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :contact_info %><br />
+    <%= f.label :contact_info %>
     <p>Bijv. een telefoonnummer.</p>
-    <p>Alleen als je interesse aangeeft bij een opdracht, tonen we dit veld bij een organisatie. Niet eerder.</p>
+    <p>Alleen als je interesse toont in een opdracht, tonen we dit veld bij de betreffende organisatie. Niet eerder.</p>
     <%= f.text_field :contact_info, class: "form-control" %>
   </div>
 
