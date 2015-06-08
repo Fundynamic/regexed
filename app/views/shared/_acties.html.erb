@@ -1,6 +1,3 @@
-<div>
+<div style="margin-top: 40px">
   <%= link_to "Meld je aan (gratis!)", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-  <% unless user_signed_in? %>
-    <%= link_to('Ik heb al een account'.html_safe, new_user_session_path, class: "btn btn-lg") %>
-  <% end %>
 </div>
