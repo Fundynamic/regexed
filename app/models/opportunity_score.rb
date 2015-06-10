@@ -4,6 +4,8 @@ class OpportunityScore < ActiveRecord::Base
 
   validates_presence_of :score, :role, :opportunity
 
+  attr_accessible :role, :opportunity
+
   def self.for_role(role)
     where(role_id: role.id)
   end
