@@ -1,23 +1,29 @@
 <div class="row">
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-center jumbotron-stats">
+    <h2>Regexed</h2>
     <h1>Transparant zijn</h1>
     <h2>is laten zien wat je hebt</h2>
-    <br/>
   </div>
 </div>
 <div class="row text-center">
-  <h2><%= @total_count_developers %> developers aangemeld</h2>
-  <p>waarvan de laatste op <%= l(Developer.last.created_at, format: :long_with_time) %></p>
+  <h1>Aanmeldingen</h1>
+  <div class="col-md-6">
+    <h2><%= @total_count_developers %> freelance developers</h2>
+    <p>waarvan de laatste op <%= l(Developer.last.created_at, format: :long_with_time) %></p>
+  </div>
+  <div class="col-md-6">
+    <h2><%= @total_count_organisations %> organisaties</h2>
+    <p>waarvan de laatste op <%= l(Organisation.last.created_at, format: :long_with_time) %></p>
+  </div>
 </div>
 <div class="row text-center">
-  <h2><%= @total_count_organisations %> organisaties aangemeld</h2>
-  <p>waarvan de laatste op <%= l(Organisation.last.created_at, format: :long_with_time) %></p>
-</div>
-<div class="row text-center">
-  <h2><%= @total_count_opportunities %> opdrachten aangemaakt</h2>
-  <p>waarvan de laatste op <%= l(Opportunity.last.created_at, format: :long_with_time) %></p>
-</div>
-<div class="row text-center">
-  <h2><%= @total_count_likes %> interesses gegeven</h2>
-  <p>waarvan de laatste op <%= l(Like.last.created_at, format: :long_with_time) %></p>
+  <h1>Opdrachten en interesses</h1>
+  <div class="col-md-6">
+    <h2><%= @total_count_opportunities %> opdrachten aangemaakt</h2>
+    <p>waarvan de laatste op <%= l(Opportunity.last.created_at, format: :long_with_time) %></p>
+  </div>
+  <div class="col-md-6">
+    <h2><%= @total_count_likes %> interesses gegeven</h2>
+    <p>waarvan de laatste op <%= l(Like.last.created_at, format: :long_with_time) %></p>
+  </div>
 </div>
