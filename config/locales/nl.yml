@@ -24,6 +24,7 @@ nl:
     errors:
       messages:
         blank: mag niet leeg zijn
+        too_long: is te lang
       models:
         user:
           attributes:

@@ -7,6 +7,33 @@ describe Opportunity do
   it { should validate_presence_of(:skills) }
   it { should belong_to(:organisation) }
 
+  context "teaser" do
+    let(:opportunity) { Opportunity.new({title: "foo", teaser: teaser, start_date: Date.today, end_date: Date.tomorrow, skills: "Java" }) }
+    subject { opportunity }
+    context "given a lengthy teaser > 256 characters" do
+      let(:teaser) { "Duur: 3 maanden\r\nStart: op korte termijn\r\nUurtarief: €70,- per uur all-in\r\nLocatie: Amsterdam Zuid Oost\r\nReden: uitbreiding van het team voor korte periode \r\nOpdracht: Deze kan ik hier helaas niet uitgebreid bespreken omdat deze confidentieel is, maar tijdens een interview leggen we je er graag meer over uit. Het is in ieder geval een opdracht bij onze klant DTG (de Telefoongids), hier doen wij een project voor detelefoongids.nl wat te maken heeft met uitbreiding van diensten. Dit project wordt door Mobiquity uitgevoerd, weliswaar op locatie bij DTG.\r\n" }
+      it { should be_valid }
+    end
+  end
+
+  context "title" do
+    let(:opportunity) { build(:opportunity, title: title) }
+    subject { opportunity }
+    context "given a title of > 255 characters" do
+      let(:title) { "a" * 256 }
+      it { should_not be_valid }
+    end
+    context "given a title of 255 characters" do
+      let(:title) { "a" * 255 }
+      it { should be_valid }
+    end
+    context "creates with title of 255" do
+      let(:title) { "a" * 255 }
+      subject { opportunity.save }
+      it { should be_truthy }
+    end
+  end
+
   context "opportunity with only start date" do
     let(:opportunity) { Opportunity.new({title: "foo", teaser: "some teaser", start_date: Date.today, end_date: end_date, skills: "Java" }) }
     subject { opportunity }

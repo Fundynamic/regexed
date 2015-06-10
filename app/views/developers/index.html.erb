@@ -38,7 +38,7 @@
         <% end %>
       </p>
       <p>
-        <%= opportunity.teaser %>
+        <%= simple_format(truncate(opportunity.teaser, length: 255)) %>
       </p>
       <div class="text-center">
         <% if @developer.can_like? %>
