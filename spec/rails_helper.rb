@@ -59,17 +59,18 @@ end
 FactoryGirl.reload
 
 Capybara.current_driver = :webkit
+Capybara.javascript_driver = :webkit
 
 # allow connection to localhost
 WebMock.disable_net_connect!(allow_localhost: true)
 
+def is_capybara_webkit_driver?
+  return (Capybara.javascript_driver == :webkit || Capybara.javascript_driver == :webkit_debug)
+end
+
 def show_screenshot
   path = File.join(Rails.root, "tmp/screenshot-#{Time.now.to_f}.png")
-  if is_capybara_poltergeist_driver?
-    page.driver.resize(1024, 1536)
-    page.driver.render(path, full: true)
-    Launchy.open("file://#{path}")
-  elsif is_capybara_webkit_driver?
+  if is_capybara_webkit_driver?
     page.driver.save_screenshot(path)
     Launchy.open("file://#{path}")
   else

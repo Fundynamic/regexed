@@ -56,8 +56,8 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 
-  gem 'capybara', require: false
-  gem 'capybara-webkit', require: false
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'launchy' # for show_screenshot
 
   gem "webmock", "~> 1.11.0"
@@ -68,6 +68,7 @@ group :test do
   gem 'database_cleaner'
 
   gem 'factory_girl'
+
 end
 
 group :test, :development do
