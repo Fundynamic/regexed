@@ -17,13 +17,13 @@
   </div>
 </div>
 <div class="row text-center">
-  <h1>Opdrachten en interesses</h1>
+  <h1>Opdrachten en reacties</h1>
   <div class="col-md-6">
     <h2><%= @total_count_opportunities %> opdrachten aangemaakt</h2>
     <p>waarvan de laatste op <%= l(Opportunity.last.created_at, format: :long_with_time) %></p>
   </div>
   <div class="col-md-6">
-    <h2><%= @total_count_likes %> interesses gegeven</h2>
-    <p>waarvan de laatste op <%= l(Like.last.created_at, format: :long_with_time) %></p>
+    <h2><%= @total_count_reactions %> reacties gegeven</h2>
+    <p>waarvan de laatste op <%= l(Reaction.last.created_at, format: :long_with_time) %></p>
   </div>
 </div>

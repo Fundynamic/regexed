@@ -52,7 +52,7 @@ class OrganisationsController < ApplicationController
 protected
   def find_org_opportunities_with_likes
     @organisation.opportunities.select do |opportunity|
-      opportunity.likes.count > 0
+      opportunity.reactions.count > 0
     end
   end
 

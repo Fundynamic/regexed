@@ -1,7 +1,7 @@
 # A user can be Admin and Developer at the same time.
 class Role < ActiveRecord::Base
   belongs_to :user
-  has_many :likes
+  has_many :reactions
   has_many :opportunity_score_for_roles
 
   after_save do
@@ -16,9 +16,9 @@ class Role < ActiveRecord::Base
   def like!(opportunity)
     raise "cannot like empty opportunity" if opportunity.blank?
     return false unless self.can_like?
-    like = opportunity.likes.build
-    like.role_id = self.id
-    like.save!
+    reaction = opportunity.reactions.build
+    reaction.role_id = self.id
+    reaction.save!
     self.update_attribute(:likes_budget, (self.likes_budget - 1))
     true
   end

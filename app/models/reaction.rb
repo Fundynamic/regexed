@@ -1,4 +1,4 @@
-class Like < ActiveRecord::Base
+class Reaction < ActiveRecord::Base
   belongs_to :opportunity
   belongs_to :role
 

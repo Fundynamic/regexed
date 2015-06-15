@@ -5,7 +5,7 @@
       <%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %>
     <% else %>
       <%= link_to "plaats nieuwe opdracht", new_opportunity_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to('Bekijk interesse', opportunities_with_interest_organisation_path, class: 'btn btn-warning btn-lg') %>
+      <%= link_to('Bekijk reactie', opportunities_with_interest_organisation_path, class: 'btn btn-warning btn-lg') %>
     <% end %>
     <br/>
   </div>
@@ -14,7 +14,7 @@
   <% if @opportunities_with_likes.count == 0 %>
     <%= @opportunities.count %> opdracht(en) geplaatst
   <% else %>
-    <%= @opportunities.count %> opdracht(en) geplaatst waarvan <%= @opportunities_with_likes.count %> intresse heeft ontvangen
+    <%= @opportunities.count %> opdracht(en) geplaatst waarop <%= @opportunities_with_likes.count %> reactie(s) zijn ontvangen
   <% end %>
   <br/>
 </div>
@@ -44,9 +44,9 @@
               <% end %>
             <% end %>
           </p>
-          <% if opportunity.likes.count > 0 %>
+          <% if opportunity.reactions.count > 0 %>
             <strong>
-              <%=opportunity.likes.count%> developer(s) hebben interesse getoond
+              <%=opportunity.reactions.count%> developer(s) hebben reacties gegeven
             </strong>
           <% end %>
         </div>

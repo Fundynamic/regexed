@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :like do
+  factory :reaction do
   end
 end

@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610192234) do
+ActiveRecord::Schema.define(version: 20150615143107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "likes", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "role_id"
-    t.integer  "opportunity_id"
-  end
-
-  add_index "likes", ["opportunity_id"], name: "index_likes_on_opportunity_id", using: :btree
-  add_index "likes", ["role_id"], name: "index_likes_on_role_id", using: :btree
 
   create_table "opportunities", force: true do |t|
     t.string   "title",           default: "", null: false
@@ -47,6 +37,16 @@ ActiveRecord::Schema.define(version: 20150610192234) do
 
   add_index "opportunity_scores", ["opportunity_id"], name: "index_opportunity_scores_on_opportunity_id", using: :btree
   add_index "opportunity_scores", ["role_id"], name: "index_opportunity_scores_on_role_id", using: :btree
+
+  create_table "reactions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "role_id"
+    t.integer  "opportunity_id"
+  end
+
+  add_index "reactions", ["opportunity_id"], name: "index_reactions_on_opportunity_id", using: :btree
+  add_index "reactions", ["role_id"], name: "index_reactions_on_role_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "type"

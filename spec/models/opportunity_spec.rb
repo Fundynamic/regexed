@@ -82,7 +82,7 @@ describe Opportunity do
     context "with role which likes this opportunity" do
       let(:role) { create(:role) }
       before do
-        opportunity.likes << create(:like, role: role, opportunity: opportunity)
+        opportunity.reactions << create(:reaction, role: role, opportunity: opportunity)
       end
       it { should eq true }
     end

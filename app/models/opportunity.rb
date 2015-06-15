@@ -9,7 +9,7 @@ class Opportunity < ActiveRecord::Base
 
   belongs_to :organisation
 
-  has_many :likes
+  has_many :reactions
 
   before_save do
     self.skills = Skill.to_array_downcase(self.skills).join(",")
@@ -41,8 +41,8 @@ class Opportunity < ActiveRecord::Base
   end
 
   def liked_by(role)
-    selected = likes.select do |like|
-      like.role_id == role.id
+    selected = reactions.select do |reaction|
+      reaction.role_id == role.id
     end
     !selected.blank?
   end
