@@ -4,4 +4,12 @@ class Reaction < ActiveRecord::Base
 
   validates_presence_of :role, :opportunity
 
+  def self.likes
+    where('score > 0')
+  end
+
+  def self dislikes
+    where('score < 0')
+  end
+
 end

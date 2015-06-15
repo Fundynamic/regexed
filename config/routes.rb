@@ -21,6 +21,7 @@ Regexed::Application.routes.draw do
 
     resources :opportunities, :shallow => true do
       post 'like', on: :member
+      post 'dislike', on: :member
     end
 
     resource :developer, :shallow => true do

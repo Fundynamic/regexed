@@ -18,9 +18,18 @@ class Role < ActiveRecord::Base
     return false unless self.can_like?
     reaction = opportunity.reactions.build
     reaction.role_id = self.id
+    reaction.score = 1 # means interested
     reaction.save!
     self.update_attribute(:likes_budget, (self.likes_budget - 1))
     true
+  end
+
+  def dislike!(opportunity)
+    raise "cannot dislike empty opportunity" if opportunity.blank?
+    reaction = opportunity.reactions.build
+    reaction.role_id = self.id
+    reaction.score = -1 # means not interested
+    reaction.save
   end
 
   def judge_opportunity(opportunity)

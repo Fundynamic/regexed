@@ -83,6 +83,7 @@ describe Opportunity do
       let(:role) { create(:role) }
       before do
         opportunity.reactions << create(:reaction, role: role, opportunity: opportunity)
+        role.reload
       end
       it { should eq true }
     end

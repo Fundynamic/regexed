@@ -25,12 +25,12 @@
         <p>
           <%= opportunity.teaser %>
         </p>
-        <% if opportunity.reactions.count > 0 %>
+        <% if opportunity.likes.count > 0 %>
           <h3>
-            <%=opportunity.reactions.count%> developer(s) hebben gereageerd
+            <%=opportunity.likes.count%> developer(s) hebben interesse
           </h3>
           <h4 style="width: 50%">Naam en vaardigheden<span class="pull-right"> Contact informatie </span></h4>
-          <% opportunity.reactions.each do |like| %>
+          <% opportunity.likes.each do |like| %>
             <p style="width: 50%"><%= like.role.name %> <span class="pull-right"> <%= like.role.contact_info %></span></p>
             <p style="width: 50%"><%= like.role.skills %> </p>
           <% end %>

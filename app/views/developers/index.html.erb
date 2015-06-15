@@ -7,6 +7,7 @@
 <div class="opportunities">
 <% @opportunity_scores.each do |opportunity_score| %>
   <% opportunity = opportunity_score.opportunity %>
+  <% next if opportunity.disliked_by(@developer) %>
   <div class="row">
     <div class="col-md-10 col-md-offset-1 opportunity">
       <h3>
@@ -19,6 +20,7 @@
           op
           <%= l(opportunity_score.created_at, format: :long_with_time) %>
         <% end %>
+
         <span class="pull-right period">
           <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
           <% if opportunity.end_date.blank? %>
@@ -42,8 +44,9 @@
       </p>
       <div class="text-center">
         <% if @developer.can_like? %>
-          <% unless opportunity.liked_by(@developer) %>
-            <%= link_to("&#128077; Ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
+          <% unless opportunity.reacted_by?(@developer) %>
+            <%= link_to("ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
+            <%= link_to("geen interesse".html_safe , dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") %>
           <% end %>
         <% else %>
           <span class="button btn-default disabled">Like!</span>

@@ -43,8 +43,11 @@ nl:
     create:
       success: Opdracht aangemaakt
     like:
-      liked_html:
+      success:
         Je hebt aangegeven interesse te hebben in %{title}
+    dislike:
+      success:
+        Je hebt aangegeven geen interesse te hebben in %{title}
 
   developers:
     create:

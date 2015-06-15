@@ -40,11 +40,36 @@ class Opportunity < ActiveRecord::Base
     order(:start_date)
   end
 
-  def liked_by(role)
-    selected = reactions.select do |reaction|
-      reaction.role_id == role.id
+  def reacted_by?(role)
+    return false unless role
+    selected = role.reactions.select do |reaction|
+      reaction.opportunity_id == self.id
     end
     !selected.blank?
+  end
+
+  def liked_by(role)
+    return false unless role
+    selected = role.reactions.select do |reaction|
+      reaction.opportunity_id == self.id && reaction.score >= 0
+    end
+    !selected.blank?
+  end
+
+  def disliked_by(role)
+    return false unless role
+    selected = role.reactions.select do |reaction|
+      reaction.opportunity_id == self.id && reaction.score < 0
+    end
+    !selected.blank?
+  end
+
+  def likes
+    self.reactions.where("score >= 0")
+  end
+
+  def dislikes
+    self.reactions.where("score < 0")
   end
 
 end

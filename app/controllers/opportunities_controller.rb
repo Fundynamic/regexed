@@ -1,7 +1,7 @@
 class OpportunitiesController < ApplicationController
 
-  before_filter :check_if_organisation!, except: [:like]
-  before_filter :check_if_developer!, only: [:like]
+  before_filter :check_if_organisation!, except: [:like, :dislike]
+  before_filter :check_if_developer!, only: [:like, :dislike]
 
   def index
   end
@@ -55,7 +55,24 @@ class OpportunitiesController < ApplicationController
     raise "Not allowed to like" unless role.can_like?
 
     role.like!(@opportunity)
-    flash[:notice] = t(".liked_html", {title: @opportunity.title})
+    flash[:notice] = t(".success", {title: @opportunity.title})
+    redirect_to :root
+  end
+
+  #user has no interest
+  def dislike
+    @opportunity = Opportunity.find(params[:id])
+    role = if current_user.developer?
+             current_user.role_developer
+           elsif current_user.organisation?
+             current_user.role_organisation
+           else
+             raise "Cannot dislike opportunity - invalid role"
+           end
+    raise "Not allowed to dislike" unless role.can_like?
+
+    role.dislike!(@opportunity)
+    flash[:notice] = t(".success", {title: @opportunity.title})
     redirect_to :root
   end
 
