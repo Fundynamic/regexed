@@ -45,7 +45,6 @@ describe Role do
         expect( role.reload.reactions.first.score ).to eq(1)
       end
     end
-
   end
 
   context "dislike opportunity" do
@@ -71,7 +70,6 @@ describe Role do
       let(:likes_budget) { 1 }
       it { should eq true }
     end
-
   end
 
 end

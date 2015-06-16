@@ -27,7 +27,8 @@ describe OpportunityScore do
         developer.judge_opportunity(opportunity)
         other_developer.judge_opportunity(opportunity)
       end
-      it "should have created another opportunity score" do
+
+      it "created an opportunity score for each role" do
         expect(OpportunityScore.count).to eq(2)
       end
     end
