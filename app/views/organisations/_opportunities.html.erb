@@ -3,10 +3,11 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1 opportunity">
         <h3>
+          <p><%=opportunity.title%></p>
           <% if closed %>
-            gesloten op <%= l(opportunity.closed_at, format: :full) %>
+            <span style="color: red"> gesloten op <%= l(opportunity.closed_at, format: :datepicker) %></span>
           <% else %>
-            <%=opportunity.title%>&nbsp;<%= link_to "Wijzigen", edit_opportunity_url(opportunity.id), class: "btn btn-info" %>
+            <%= link_to "Wijzigen", edit_opportunity_url(opportunity.id), class: "btn btn-info" %>
           <% end %>
           <span class="pull-right period">
             <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
