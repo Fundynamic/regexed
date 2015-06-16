@@ -50,7 +50,7 @@ nl:
         Je hebt aangegeven geen interesse te hebben in %{title}
     destroy:
       success:
-        %{title} is gesloten
+        "%{title} is gesloten"
 
   developers:
     create:
