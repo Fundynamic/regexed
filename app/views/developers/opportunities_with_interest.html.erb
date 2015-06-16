@@ -7,6 +7,7 @@
   </div>
   <% @opportunity_scores.each do |opportunity_score| %>
     <% opportunity = opportunity_score.opportunity %>
+    <% next unless opportunity.liked_by(@developer) %>
     <div class="row">
       <div class="col-md-10 col-md-offset-1 opportunity">
         <h3>
@@ -40,15 +41,6 @@
         <p>
           <%= opportunity.teaser %>
         </p>
-        <div class="text-center">
-          <% if @developer.can_like? %>
-            <% unless opportunity.liked_by(@developer) %>
-              <%= link_to("&#128077; Ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
-            <% end %>
-          <% else %>
-            <span class="button btn-default disabled">Like!</span>
-          <% end %>
-        </div>
       </div>
     </div>
   <% end %>
