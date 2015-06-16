@@ -40,7 +40,7 @@ class Opportunity < ActiveRecord::Base
     order(:start_date)
   end
 
-  def reacted_by?(role)
+  def reacted_by(role)
     return false unless role
     selected = role.reactions.select do |reaction|
       reaction.opportunity_id == self.id

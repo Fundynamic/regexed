@@ -48,7 +48,7 @@
       </p>
       <div class="text-center">
         <% if @developer.can_like? %>
-          <% unless opportunity.reacted_by?(@developer) %>
+          <% unless opportunity.reacted_by(@developer) %>
             <%= link_to("ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
             <%= link_to("geen interesse".html_safe , dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") %>
           <% end %>
