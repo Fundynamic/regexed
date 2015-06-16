@@ -48,6 +48,9 @@ nl:
     dislike:
       success:
         Je hebt aangegeven geen interesse te hebben in %{title}
+    destroy:
+      success:
+        %{title} is gesloten
 
   developers:
     create:
