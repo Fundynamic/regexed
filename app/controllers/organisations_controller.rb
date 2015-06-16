@@ -7,7 +7,7 @@ class OrganisationsController < ApplicationController
   def show
     if current_user && current_user.role_organisation.present?
       @organisation = current_user.role_organisation
-      @opportunities = @organisation.opportunities
+      @opportunities = @organisation.opportunities.available
       @opportunities_with_likes = find_org_opportunities_with_likes
       render :index
     else

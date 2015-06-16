@@ -98,7 +98,7 @@ describe Opportunity do
     let(:opportunity) { create(:opportunity) }
     before { opportunity }
     it "is found since yesterday" do
-      expect(Opportunity.starting_since(Date.yesterday)).to contain_exactly(opportunity)
+      expect(Opportunity.available.starting_since(Date.yesterday)).to contain_exactly(opportunity)
     end
   end
 

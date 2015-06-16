@@ -40,6 +40,14 @@ class Opportunity < ActiveRecord::Base
     order(:start_date)
   end
 
+  def self.available
+    where("closed_at is null")
+  end
+
+  def self.closed
+    where("closed_at is not null")
+  end
+
   def reacted_by(role)
     return false unless role
     selected = role.reactions.select do |reaction|

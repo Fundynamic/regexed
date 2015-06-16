@@ -44,7 +44,7 @@ class Role < ActiveRecord::Base
   end
 
   def self.judge_all_opportunities(role)
-    Opportunity.starting_since(role.available).each do |opportunity|
+    Opportunity.available.starting_since(role.available).each do |opportunity|
       role.judge_opportunity(opportunity)
     end
   end
