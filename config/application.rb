@@ -29,5 +29,6 @@ module Regexed
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :nl
     config.time_zone = 'Amsterdam'
+    config.active_record.default_timezone = 'Amsterdam'
   end
 end
