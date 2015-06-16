@@ -8,7 +8,7 @@ class DevelopersController < ApplicationController
     if current_user && current_user.role_developer.present?
       @developer = current_user.role_developer
       # @opportunities = Opportunity.starting_since(@developer.available).ordered_by_start_date
-      @opportunity_scores = OpportunityScore.for_role(@developer).ordered_by_highest_score.limit(10)
+      @opportunity_scores = OpportunityScore.for_role(@developer).ordered_by_highest_score
       render :index
     else
       redirect_to aanmelden_path
