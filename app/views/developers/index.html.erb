@@ -1,14 +1,13 @@
-<div class="row">
-  <div class="jumbotron text-center">
-    <h1>Jouw relevante opdrachten</h1><br/>
-    <h2>Op basis van jouw <%= link_to "voorkeuren", root_path %></h2>
-  </div>
+<div class="row text-center">
+  <h1>Jouw relevante opdrachten</h1><br/>
+  <h2>Op basis van jouw <%= link_to "voorkeuren", root_path %></h2>
 </div>
 <div class="opportunities">
 <% @opportunity_scores.each do |opportunity_score| %>
   <% opportunity = opportunity_score.opportunity %>
   <% next if opportunity.disliked_by(@developer) %>
   <% next if !opportunity.closed_at.blank? %>
+
   <div class="row">
     <div class="col-md-10 col-md-offset-1 opportunity">
       <h3>
@@ -18,24 +17,25 @@
 
         <p>
         <% opportunity_score.stars.times do %>
-          <%= '&#9733;'.html_safe %> <!-- star !-->
+          <span class="glyphicon glyphicon-star"></span>
         <% end %>
         <% if opportunity.liked_by(@developer) %>
-          <%= '&#128077'.html_safe %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
           op
           <%= l(opportunity_score.created_at, format: :long_with_time) %>
         <% end %>
+        </p>
 
-        <span class="pull-right period">
+        <div class="pull-right period">
           <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
           <% if opportunity.end_date.blank? %>
             <%= '&#127937;'.html_safe %> ??-??-????
           <% else %>
             <%= '&#127937;'.html_safe%> <%= l(opportunity.end_date, format: :datepicker) %>
           <% end %>
-        </span>
+        </div>
       </h3>
-      <p><strong>Vaardigheden:</strong>
+      <p><strong>Benodigde vaardigheden:</strong>
         <% skills = Skill.to_array(opportunity.skills) %>
         <% skills.each_with_index do |skill, index| %>
           <span><em><%=skill%></em></span>
@@ -50,8 +50,14 @@
       <div class="text-center">
         <% if @developer.can_like? %>
           <% unless opportunity.reacted_by(@developer) %>
-            <%= link_to("ik heb interesse".html_safe , like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") %>
-            <%= link_to("geen interesse".html_safe , dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") %>
+            <%= link_to(like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") do %>
+              <span class="glyphicon glyphicon-heart"></span>
+              ik heb interesse
+            <% end %>
+            <%= link_to(dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              geen interesse
+            <% end %>
           <% end %>
         <% else %>
           <span class="button btn-default disabled">Like!</span>

@@ -1,3 +1,6 @@
 <li>
-  <%= link_to(current_user.role_developer.name, edit_developer_path) %>
+  <%= link_to(edit_developer_path, class: "text-normal-size") do  %>
+    <span class="glyphicon glyphicon-user"></span>
+    <%= current_user.role_developer.name %>
+  <% end %>
 </li>

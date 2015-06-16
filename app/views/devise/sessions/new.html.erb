@@ -25,7 +25,7 @@
     <div class="col-md-offset-4 col-md-2">
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
       <p>
-        <%= link_to "Nieuw account aanmaken", new_registration_path(resource_name), class: "btn btn-link" %><br />
+        <%= link_to "Nieuw account aanmaken", new_registration_path(resource_name), class: "text-normal-size" %><br />
       </p>
     <% end -%>
     </div>
@@ -33,7 +33,7 @@
     <div class="col-md-2">
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
       <p>
-        <%= link_to "Wachtwoord vergeten?", new_password_path(resource_name), class: "btn btn-link pull-right" %><br />
+        <%= link_to "Wachtwoord vergeten?", new_password_path(resource_name), class: "text-normal-size pull-right" %><br />
       </p>
     <% end -%>
     </div>

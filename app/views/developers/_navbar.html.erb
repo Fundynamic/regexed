@@ -1,6 +1,12 @@
 <li>
-  <%= link_to('Opdrachten', developer_path) %>
+  <%= link_to(developer_path, class: "text-normal-size") do %>
+    <span class="glyphicon glyphicon-th-list"></span>
+    Opdrachten
+  <% end %>
 </li>
 <li>
-  <%= link_to('Reacties', opportunities_with_interest_developer_path) %>
+  <%= link_to(opportunities_with_interest_developer_path, class: "text-normal-size") do %>
+    <span class="glyphicon glyphicon-thumbs-up"></span>
+    Reacties
+  <% end %>
 </li>
