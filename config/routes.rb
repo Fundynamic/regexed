@@ -31,6 +31,7 @@ Regexed::Application.routes.draw do
 
     resource :organisation, :shallow => true do
       get 'opportunities_with_interest', on: :member
+      get 'closed_opportunities', on: :member
     end
   end
 

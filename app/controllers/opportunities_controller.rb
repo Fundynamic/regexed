@@ -76,6 +76,13 @@ class OpportunitiesController < ApplicationController
     redirect_to :root
   end
 
+  def destroy
+    @opportunity = Opportunity.find(params[:id])
+    @opportunity.close!
+    flash[:notice] = t(".success", {title: @opportunity.title})
+    redirect_to :root
+  end
+
 private
   def organisation
     current_user.role_organisation

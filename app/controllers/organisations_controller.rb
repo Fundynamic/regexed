@@ -28,6 +28,11 @@ class OrganisationsController < ApplicationController
     @opportunities = find_org_opportunities_with_likes
   end
 
+  def closed_opportunities
+    @organisation = current_user.role_organisation
+    @opportunities = @organisation.opportunities.closed
+  end
+
   def create
     @organisation = Organisation.new(params[:organisation])
     current_user.roles << @organisation

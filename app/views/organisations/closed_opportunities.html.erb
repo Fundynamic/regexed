@@ -1,11 +1,10 @@
 <% if @opportunities.count > 0 %>
   <div class="row">
     <div class="jumbotron text-center">
-      <h1>Interesse!</h1><br/>
-      <h2>Neem contact op. Goed gevoel? Gaan!</h2>
+      <h1>Gesloten opdrachten</h1><br/>
     </div>
   </div>
-  <%= render partial: 'opportunities', locals: { :opportunities => @opportunities } %>
+  <%= render partial: 'opportunities', locals: { :opportunities => @opportunities, closed: true } %>
 <% else %>
   <div class="row">
     <div class="jumbotron text-center">

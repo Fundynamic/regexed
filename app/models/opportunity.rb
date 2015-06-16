@@ -80,4 +80,10 @@ class Opportunity < ActiveRecord::Base
     self.reactions.where("score < 0")
   end
 
+  def close!
+    raise "already closed at #{self.closed_at}" if !self.closed_at.blank?
+    self.update_attribute(:closed_at, DateTime.now)
+    true
+  end
+
 end

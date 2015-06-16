@@ -8,6 +8,7 @@
 <% @opportunity_scores.each do |opportunity_score| %>
   <% opportunity = opportunity_score.opportunity %>
   <% next if opportunity.disliked_by(@developer) %>
+  <% next if !opportunity.closed_at.blank? %>
   <div class="row">
     <div class="col-md-10 col-md-offset-1 opportunity">
       <h3>

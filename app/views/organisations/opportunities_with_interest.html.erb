@@ -5,7 +5,7 @@
       <h2>Neem contact op. Goed gevoel? Gaan!</h2>
     </div>
   </div>
-  <%= render partial: 'opportunities', locals: { :opportunities => @opportunities } %>
+  <%= render partial: 'opportunities', locals: { :opportunities => @opportunities, closed: false } %>
 <% else %>
   <div class="row">
     <div class="jumbotron text-center">
