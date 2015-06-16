@@ -64,13 +64,10 @@
           <%= render("#{current_user.role_name}s/navbar") %>
         <% else %>
           <li>
-            <%= link_to "voor Developers", info_developers_path, class: "text-normal-size" %>
+            <%= link_to "home", root_path, class: "text-normal-size" %>
           </li>
           <li>
-            <%= link_to "voor Organisaties", info_organisations_path, class: "text-normal-size" %>
-          </li>
-          <li>
-            <%= link_to "Wat kost het?", prijzen_path, class: "text-normal-size" %>
+            <%= link_to "voor bedrijven", info_organisations_path, class: "text-normal-size" %>
           </li>
         <% end %>
       </ul>
@@ -80,9 +77,9 @@
         <% end %>
         <li>
           <% if user_signed_in? %>
-            <%= link_to('&#128275; Uitloggen'.html_safe, destroy_user_session_path, :method => :delete, class: "btn") %>
+            <%= link_to('&#128275; Uitloggen'.html_safe, destroy_user_session_path, :method => :delete, class: "text-normal-size") %>
           <% else %>
-            <%= link_to('&#128274; Inloggen'.html_safe, new_user_session_path, class: "btn") %>
+            <%= link_to('&#128274; Inloggen'.html_safe, new_user_session_path, class: "text-normal-size") %>
           <% end %>
         </li>
       </ul>
@@ -108,8 +105,6 @@
       <%= link_to "Contact", contact_path %>
       |
       <%= link_to "Onze voorwaarden", algemene_voorwaarden_path %>
-      |
-      <%= link_to "Stats", stats_path %>
     </p>
   </div>
   <div class="container pull-right">
