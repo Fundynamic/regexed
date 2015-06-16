@@ -1,24 +1,30 @@
 <% if @opportunity_scores.count > 0 %>
-  <div class="row">
-    <div class="jumbotron text-center">
-      <h1>Je hebt interesse getoond in deze opdrachten</h1><br/>
-      <h2>meest recente bovenaan</h2>
-    </div>
+  <div class="row text-center">
+    <h1>Je hebt interesse getoond in deze opdrachten</h1><br/>
+    <h2>meest recente bovenaan</h2>
   </div>
+  <div class="opportunities">
   <% @opportunity_scores.each do |opportunity_score| %>
     <% opportunity = opportunity_score.opportunity %>
     <% next unless opportunity.liked_by(@developer) %>
     <div class="row">
       <div class="col-md-10 col-md-offset-1 opportunity">
         <h3>
-          <%=opportunity.title%>
-          <% opportunity_score.stars.times do %>
-            <%= '&#9733;'.html_safe %> <!-- star !-->
-          <% end %>
-          <% if opportunity.liked_by(@developer) %>
-            <%= '&#128077'.html_safe %>
-            op
-            <%= l(opportunity_score.created_at, format: :long_with_time) %>
+          <%=opportunity.title%> bij <%= opportunity.organisation.name %>
+          <p>
+            <% opportunity_score.stars.times do %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% if opportunity.liked_by(@developer) %>
+              <span class="glyphicon glyphicon-thumbs-up"></span>
+              op
+              <%= l(opportunity_score.created_at, format: :long_with_time) %>
+            <% end %>
+          </p>
+          <% if opportunity.closed_at.present? %>
+          <p style="color: red">
+            Gesloten op <%= l(opportunity.closed_at, format: :datepicker) %>
+          </p>
           <% end %>
           <span class="pull-right period">
           <p><%= '&#10144;'.html_safe%> <%= l(opportunity.start_date, format: :datepicker) %></p>
@@ -59,3 +65,4 @@
     </div>
   </div>
 <% end %>
+</div>

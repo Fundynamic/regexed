@@ -14,16 +14,15 @@
         <p>
         <%=opportunity.title%> bij <%= opportunity.organisation.name %>
         </p>
-
         <p>
-        <% opportunity_score.stars.times do %>
-          <span class="glyphicon glyphicon-star"></span>
-        <% end %>
-        <% if opportunity.liked_by(@developer) %>
-          <span class="glyphicon glyphicon-thumbs-up"></span>
-          op
-          <%= l(opportunity_score.created_at, format: :long_with_time) %>
-        <% end %>
+          <% opportunity_score.stars.times do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+          <% if opportunity.liked_by(@developer) %>
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            op
+            <%= l(opportunity_score.created_at, format: :long_with_time) %>
+          <% end %>
         </p>
 
         <div class="pull-right period">
@@ -48,19 +47,15 @@
         <%= simple_format(truncate(opportunity.teaser, length: 255)) %>
       </p>
       <div class="text-center">
-        <% if @developer.can_like? %>
-          <% unless opportunity.reacted_by(@developer) %>
-            <%= link_to(like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") do %>
-              <span class="glyphicon glyphicon-heart"></span>
-              ik heb interesse
-            <% end %>
-            <%= link_to(dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") do %>
-              <span class="glyphicon glyphicon-trash"></span>
-              geen interesse
-            <% end %>
+        <% unless opportunity.reacted_by(@developer) %>
+          <%= link_to(like_opportunity_path(opportunity), method: :post, class: "btn btn-primary btn-lg") do %>
+            <span class="glyphicon glyphicon-heart"></span>
+            ik heb interesse
           <% end %>
-        <% else %>
-          <span class="button btn-default disabled">Like!</span>
+          <%= link_to(dislike_opportunity_path(opportunity), method: :post, class: "btn btn-danger btn-lg") do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            geen interesse
+          <% end %>
         <% end %>
       </div>
     </div>
