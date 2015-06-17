@@ -6,6 +6,12 @@ Regexed::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  ### ENABLE THIS IS YOU WANT TO TEST AS IF LOCAL HAS PRECOMPILED ASSETS
+  #config.assets.compile = false
+  # config.serve_static_assets = false
+  #config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+  #config.assets.digest = true
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -25,5 +31,5 @@ Regexed::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = true # DISABLE THIS IF YOU WANT TO TEST WITH PRECOMPILED ASSETS
 end
