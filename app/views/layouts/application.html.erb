@@ -107,19 +107,21 @@
 <!-- /container -->
 
 <footer class="footer text-normal-size">
-  <div class="container pull-left">
-    <p class="text-muted">
-      <span>&copy; Regexed 2015</span>
-      |
-      <%= link_to "Contact", contact_path %>
-      |
-      <%= link_to "Onze voorwaarden", algemene_voorwaarden_path %>
-    </p>
-  </div>
-  <div class="container pull-right">
-    <p class="text-muted">
-      <span>door <a href="http://www.fundynamic.com">Fundynamic</a></span>
-    </p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-3">
+        <p></p>
+      </div>
+      <div class="col-md-5">
+        <p>&copy; Regexed 2015</p>
+        <p><%= link_to "Contact", contact_path %></p>
+        <p><%= link_to "Onze voorwaarden", algemene_voorwaarden_path %></p>
+        <p><%= link_to "Twitter", "http://www.twitter.com/regexed_nl" %></p>
+      </div>
+    </div>
+    <div class="row text-center" style="margin-top: 50px">
+      <p>Regexed is ontwikkeld door <a href="http://www.fundynamic.com">Fundynamic</a></p>
+    </div>
   </div>
 </footer>
 

@@ -1,10 +1,12 @@
 <div class="row">
   <div class="jumbotron text-center jumbotron-organisation">
     <h1>vind freelance developers</h1>
-    <%= render("shared/acties") %>
+    <div style="margin-top: 40px">
+      <%= link_to "probeer nu gratis", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    </div>
   </div>
 </div>
-<div class="row text-center">
+<div class="row text-center row-margins">
   <div class="col-md-offset-1 col-md-3">
     <h2>bespaar tijd</h2>
     <p>Beschikbaar? Juiste vaardigheden? Laat regexed deze vragen beantwoorden. Dan houd jij tijd over.</p>
@@ -18,3 +20,8 @@
     <p>Reageren op een opdracht doe je met 1 muisklik. Contact gegevens zijn zo uitgewisseld.</p>
   </div>
 </div>
+<div class="row text-center">
+  <p>Je eerste opdracht binnen 5 minuten aangeboden. Zo gepiept!</p>
+  <%= link_to "probeer nu gratis", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+</div>
+

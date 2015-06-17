@@ -2,10 +2,12 @@
   <div class="jumbotron jumbotron-home">
     <h1>vind je volgende opdracht</h1>
     <h2>bij het slimste freelance developer netwerk</h2>
-    <%= render("shared/acties") %>
+    <div style="margin-top: 40px">
+      <%= link_to "begin met opdrachten ontvangen", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    </div>
   </div>
 </div>
-<div class="row text-center">
+<div class="row text-center row-margins">
   <div class="col-md-offset-1 col-md-3">
     <h2>slim aanbod</h2>
     <p>Op basis van je beschikbaarheid en vaardigheden tonen we relevante opdrachten.</p>
@@ -19,4 +21,8 @@
     <p>Je zoekt slimme beschikbare freelance developers. Regexed regelt dat.</p>
     <%= link_to("lees hier hoe we dat doen", info_organisations_path) %>
   </div>
+</div>
+<div class="row text-center">
+  <p>Meteen jouw meest relevante opdracht zien? Zo gepiept!</p>
+  <%= link_to "begin met opdrachten ontvangen", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 </div>
