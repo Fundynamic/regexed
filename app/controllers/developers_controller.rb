@@ -60,4 +60,8 @@ class DevelopersController < ApplicationController
     end
   end
 
+  def preferences
+
+  end
+
 end

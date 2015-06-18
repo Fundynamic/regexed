@@ -1,12 +1,18 @@
 <li>
   <%= link_to(developer_path, class: "text-normal-size") do %>
     <span class="glyphicon glyphicon-th-list"></span>
-    Opdrachten
+    opdrachten
   <% end %>
 </li>
 <li>
   <%= link_to(opportunities_with_interest_developer_path, class: "text-normal-size") do %>
     <span class="glyphicon glyphicon-thumbs-up"></span>
-    Reacties
+    reacties
+  <% end %>
+</li>
+<li>
+  <%= link_to(preferences_developer_path, class: "text-normal-size") do %>
+    <span class="glyphicon glyphicon-cog"></span>
+    voorkeuren
   <% end %>
 </li>
