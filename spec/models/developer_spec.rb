@@ -5,6 +5,7 @@ describe Developer do
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:skills) }
   it { should validate_presence_of(:pitch) }
+  it { should validate_length_of(:pitch).is_at_most(255) }
   it { should validate_presence_of(:available) }
   it { should validate_presence_of(:contact_info) }
 

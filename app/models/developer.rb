@@ -3,6 +3,8 @@ class Developer < Role
 
   attr_accessible :first_name, :last_name, :skills, :available, :pitch, :contact_info
 
+  validates_length_of :pitch, maximum: 255
+
   before_save do
     self.skills = Skill.to_array_downcase(self.skills).join(",")
   end
