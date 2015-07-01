@@ -41,6 +41,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'mailgun_rails'
+
+gem 'mailcatcher', '~> 0.6.1'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

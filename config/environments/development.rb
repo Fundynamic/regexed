@@ -32,4 +32,21 @@ Regexed::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true # DISABLE THIS IF YOU WANT TO TEST WITH PRECOMPILED ASSETS
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.default_url_options = {
+    host: "localhost:3000"
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mailgun.com",
+    port: 587,
+    user_name: 'postmaster@sandbox7ddcdd21092143c18523413526117f87.mailgun.org',
+    password: '95944868f9c1c5adb3a1413ef1730f1a',
+    :openssl_verify_mode => 'none'
+  }
+
 end
